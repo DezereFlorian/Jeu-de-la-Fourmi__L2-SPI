@@ -28,4 +28,5 @@ void affiche_lab(t_case labyrinthe[N][N]){
 			}
 		}
 	}
+	printf("\n\n\n");
 }

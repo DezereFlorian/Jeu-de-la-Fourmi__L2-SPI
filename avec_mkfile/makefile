@@ -15,3 +15,6 @@ mise_a_0.o : mise_a_0.c
 	
 gen_labyrinthe.o : gen_labyrinthe.c header.h
 	gcc -o gen_labyrinthe.o -c gen_labyrinthe.c -Wall
+	
+clean:
+	rm -rf *.o
