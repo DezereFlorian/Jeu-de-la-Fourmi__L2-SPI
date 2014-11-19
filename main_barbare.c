@@ -7,6 +7,15 @@
 
  //definition des variables globales
  #define N 12 // taille du labyrinthe en largeur et longueur
+ #define Z 50 // taille du tableau de populaton, soit un maximum de 50 fourmi dans le tableau A AJOUTER
+
+/* A AJOUTER AU MAKEFILE*/
+// structure necessaire a la connaissance d'une fourmi, avec sa place en x, y et son numero d'immatriculation
+typedef struct {int matricule, int x, int y;} t_fourmi;//matricule represente le numero de la fourmi, x et y sa position 
+
+/* A AJOUTER AU MAKEFILE*/
+// tableau de structure permettant de connaitre toutes les fourmis
+t_fourmi population[Z];
  
  // definition d'une énumération de type t_case pour la création des differentes cases du labyrinthe
  typedef enum {vide, mur, base, eau, dodo, manger} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants
@@ -34,6 +43,20 @@
 	for (i = 0; i < N; i++){
 		for (j = 0; j < N; j++){
 			stock[i][j] = 0;
+		}
+	}
+ }
+ 
+ /* A AJOUTER AU MAKEFILE*/
+ /*fonction permettant la recherche de la base du labyrinthe pour le pop des fourmis*/
+ void recherche_base(t_case labyrinthe[N][N], int *x, int *y){
+ 	int i = 0, j = 0;
+	for (i = 0; i < N; i++){
+		for (j = 0; j < N; j ++){
+			if (labyrinthe[i][j] == base){
+				*x = i;
+				*y = j;
+			}
 		}
 	}
  }
@@ -129,7 +152,6 @@ void gen_points_dodo (t_case labyrinthe[N][N], int nb_dodo){
 void gen_points (t_case labyrinthe[N][N]){
 	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
 	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
-	printf("\n\nSaisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
 	scanf("%i", &nb_eau);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");
 	scanf("%i",&nb_manger);
@@ -147,7 +169,7 @@ void affiche_lab(t_case labyrinthe[N][N]){
 		for (j = 0; j < N; j++){
 			switch(labyrinthe[i][j]){
 				case mur:
-					printf("U");
+					printf("[]");
 					break;
 				case base:
 					printf("*");
@@ -170,6 +192,14 @@ void affiche_lab(t_case labyrinthe[N][N]){
 	}
 }
 /* il faut absolument modifier cette affichage pourri et trouver un truc qui claque !!! */
+
+ /* A AJOUTER AU MAKEFILE*/
+/*fonction permettant le pop des fourmis*/
+void gen_fourmi(t_case labyrinthe[N][N], t_fourmi population[Z][Z]){
+	int x = 0, y = 0;
+	recherche_base(labyrinthe, &x, &y);
+	
+}
 
 int main (void){
 	init_labyrinthe(labyrinthe);
