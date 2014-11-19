@@ -18,7 +18,7 @@ typedef struct {int matricule; int x; int y;} t_fourmi;//matricule represente le
 t_fourmi population[Z];
  
  // definition d'une énumération de type t_case pour la création des differentes cases du labyrinthe
- typedef enum {vide, mur, base, eau, dodo, manger} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants
+ typedef enum {vide, mur, base, eau, dodo, manger, fourmi} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants, ainsi que la fourmi
  
  //definition de la matrice labyrinthe representant la table de jeu de type t_case
  t_case labyrinthe[N][N];
@@ -187,6 +187,9 @@ void affiche_lab(t_case labyrinthe[N][N]){
 				case vide:
 					printf(" ");
 					break;
+				case fourmi:
+					printf("x");
+					break;
 			}
 		}
 		printf("\n");
@@ -196,13 +199,18 @@ void affiche_lab(t_case labyrinthe[N][N]){
 
  /* A AJOUTER AU MAKEFILE*/
 /*fonction permettant le pop des fourmis*/
-void gen_fourmi(t_case labyrinthe[N][N], t_fourmi population[Z][Z]){
+void gen_fourmi(t_case labyrinthe[N][N], t_fourmi population[Z], int *nb_fourmi){
 	int x = 0, y = 0;
 	recherche_base(labyrinthe, &x, &y);
-	
+	labyrinthe[x][y] = fourmi;
+	population[*nb_fourmi-1].matricule = 1; //avec compteur...
+	population[*nb_fourmi-1].x = x;
+	population[*nb_fourmi-1].y = y;
 }
 
 int main (void){
+	int nb_fourmi = 0; //le nombre utile de fourmi dans le labyrinthe
+	// modif gen fourmi ajouter boucle?
 	init_labyrinthe(labyrinthe);
 	vide_stock(stock);
 	gen_labyrinthe(labyrinthe);
