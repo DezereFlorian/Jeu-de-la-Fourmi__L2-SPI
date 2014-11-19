@@ -129,7 +129,7 @@ void gen_points_dodo (t_case labyrinthe[N][N], int nb_dodo){
 void gen_points (t_case labyrinthe[N][N]){
 	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
 	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
-	printf("Saisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
+	printf("\n\nSaisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
 	scanf("%i", &nb_eau);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");
 	scanf("%i",&nb_manger);
