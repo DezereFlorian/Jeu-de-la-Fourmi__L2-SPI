@@ -161,6 +161,9 @@ void affiche_lab(t_case labyrinthe[N][N]){
 				case dodo:
 					printf("D");
 					break;
+				case vide:
+					printf(" ");
+					break;
 			}
 		}
 		printf("\n");
