@@ -79,14 +79,11 @@ void gen_points_eau (t_case labyrinthe[N][N], int nb_eau){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point d'eau*/
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_eau; compteur ++){
-		i = rand () % 12;
-		j = rand () % 12;
-		if (labyrinthe[i][j] != vide){
-			while (labyrinthe[i][j] != vide){
-				i = rand () % 12;
-				j = rand () % 12;
-			}
+		do{
+			i = rand () % 12;
+			j = rand() % 12;
 		}
+		while(labyrinthe[i][j] != vide);
 		labyrinthe[i][j] = eau;
 	}
 }
