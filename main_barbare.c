@@ -11,7 +11,7 @@
 
 /* A AJOUTER AU MAKEFILE*/
 // structure necessaire a la connaissance d'une fourmi, avec sa place en x, y et son numero d'immatriculation
-typedef struct {int matricule, int x, int y;} t_fourmi;//matricule represente le numero de la fourmi, x et y sa position 
+typedef struct {int matricule; int x; int y;} t_fourmi;//matricule represente le numero de la fourmi, x et y sa position 
 
 /* A AJOUTER AU MAKEFILE*/
 // tableau de structure permettant de connaitre toutes les fourmis
@@ -152,6 +152,7 @@ void gen_points_dodo (t_case labyrinthe[N][N], int nb_dodo){
 void gen_points (t_case labyrinthe[N][N]){
 	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
 	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
+	printf("\n\nSaisissez le nombre de eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
 	scanf("%i", &nb_eau);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");
 	scanf("%i",&nb_manger);
@@ -169,7 +170,7 @@ void affiche_lab(t_case labyrinthe[N][N]){
 		for (j = 0; j < N; j++){
 			switch(labyrinthe[i][j]){
 				case mur:
-					printf("[]");
+					printf("&");
 					break;
 				case base:
 					printf("*");
