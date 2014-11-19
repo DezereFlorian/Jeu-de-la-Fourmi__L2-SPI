@@ -44,7 +44,6 @@ void gen_points_eau (t_case labyrinthe[N][N], int nb_eau){
 	}
 }
 
-
 /*fonction de genration des differents points de repas dans le labyrinthe */
 void gen_points_repas(t_case labyrinthe[N][N], int nb_repas){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de repas*/
@@ -84,7 +83,7 @@ void gen_points_dodo (t_case labyrinthe[N][N], int nb_dodo){
 /* fonction de genration aleatoire des differents points utiles */
 void gen_points (t_case labyrinthe[N][N]){
 	int nb_repas = 0, nb_dodo = 0, nb_eau = 0;
-	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
+	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques\n\n");
 	printf("Saisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
 	scanf("%i", &nb_eau);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");

@@ -5,14 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <maths.h>
+#include <math.h>
 #include <time.h> //importation necessaire pour la fonction rand 
 
  //definition des variables globales
  #define N 12 // taille du labyrinthe en largeur et longueur
  
  // definition d'une énumération de type t_case pour la création des differentes cases du labyrinthe
- typedef enum {vide, mur, base, eau, dodo, manger} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et repas à differents point importants
+ typedef enum {vide, mur, base, eau, dodo, repas} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et repas à differents point importants
  
  //definition de la matrice labyrinthe representant la table de jeu de type t_case
  t_case labyrinthe[N][N];

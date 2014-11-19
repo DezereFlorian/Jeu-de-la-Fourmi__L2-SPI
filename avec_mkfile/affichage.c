@@ -5,7 +5,7 @@
 /*fonction d'affichage du labyrinthe */
 void affiche_lab(t_case labyrinthe[N][N]){
 	int i = 0, j = 0;
-	for (i = 0, i < N, i++){
+	for (i = 0; i < N; i++){
 		for (j = 0; j < N; j++){
 			if (labyrinthe[i][j] == mur){
 				printf("U");
@@ -29,4 +29,3 @@ void affiche_lab(t_case labyrinthe[N][N]){
 		}
 	}
 }
-/* il faut absolument modifier cette affichage pourri et trouver un truc qui claque !!! */

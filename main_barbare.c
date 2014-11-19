@@ -178,6 +178,6 @@ int main (void){
 	gen_labyrinthe(labyrinthe);
 	gen_points(labyrinthe);
 	gen_stock(labyrinthe, stock);
-	affic_labyrinthe(labyrinthe);
+	affiche_lab(labyrinthe);
 	return EXIT_SUCCESS;
 }
