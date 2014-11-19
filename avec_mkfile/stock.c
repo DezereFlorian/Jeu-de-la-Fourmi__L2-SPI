@@ -3,7 +3,7 @@
 #include "header.h"
 
 
-/*fonction qui permet de creer un stock aleatoire pour chaque point important*/
+ /*fonction qui permet de creer un stock aleatoire pour chaque point important*/
 void gen_stock (t_case labyrinthe[N][N], int stock[N][N]){
 	int i = 0, j = 0; 
 	for (i = 0; i < N; i++){
