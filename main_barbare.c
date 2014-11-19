@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <maths.h>
+#include <math.h>
 #include <time.h> //importation necessaire pour la fonction rand 
 
  //definition des variables globales
  #define N 12 // taille du labyrinthe en largeur et longueur
  
  // definition d'une énumération de type t_case pour la création des differentes cases du labyrinthe
- typedef enum {vide, mur, base, eau, dodo, manger} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et repas à differents point importants
+ typedef enum {vide, mur, base, eau, dodo, manger} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants
  
  //definition de la matrice labyrinthe representant la table de jeu de type t_case
  t_case labyrinthe[N][N];
@@ -43,7 +43,7 @@ void gen_stock (t_case labyrinthe[N][N], int stock[N][N]){
 	int i = 0, j = 0; 
 	for (i = 0; i < N; i++){
 		for (j = 0; j < N; j++){
-			if (labyrinthe[i][j] == eau || labyrinthe[i][j] == dodo || labyrinthe[i][j] == repas){ //verifie si la case represente un point d'eau, de repas ou de dodo 
+			if (labyrinthe[i][j] == eau || labyrinthe[i][j] == dodo || labyrinthe[i][j] == manger){ //verifie si la case represente un point d'eau, de manger ou de dodo 
 				stock[i][j] = rand () %451 + 50; //on genre un stock compris entre 50 et 500 ressources que l'on stocke dans la matrice stock associe au labyrinthe
 			}
 		}
@@ -89,11 +89,11 @@ void gen_points_eau (t_case labyrinthe[N][N], int nb_eau){
 }
 
 
-/*fonction de genration des differents points de repas dans le labyrinthe */
-void gen_points_repas(t_case labyrinthe[N][N], int nb_repas){
-	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de repas*/
+/*fonction de genration des differents points de manger dans le labyrinthe */
+void gen_points_manger(t_case labyrinthe[N][N], int nb_manger){
+	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de manger*/
 	int compteur = 0;
-	for (compteur = 0; compteur < nb_repas; compteur ++){
+	for (compteur = 0; compteur < nb_manger; compteur ++){
 		i = rand () % 12;
 		j = rand () % 12;
 		if (labyrinthe[i][j] != vide){
@@ -102,7 +102,7 @@ void gen_points_repas(t_case labyrinthe[N][N], int nb_repas){
 				j = rand () % 12;
 			}
 		}
-		labyrinthe[i][j] = repas;
+		labyrinthe[i][j] = manger;
 	}
 }
 
@@ -127,23 +127,23 @@ void gen_points_dodo (t_case labyrinthe[N][N], int nb_dodo){
 
 /* fonction de genration aleatoire des differents points utiles */
 void gen_points (t_case labyrinthe[N][N]){
-	int nb_repas = 0, nb_dodo = 0, nb_eau = 0;
+	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
 	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
-	printf("Saisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
+	printf("\n\nSaisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
 	scanf("%i", &nb_eau);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");
-	scanf("%i",&nb_repas);
+	scanf("%i",&nb_manger);
 	printf("Saisissez le nombre de dortoir que vous voudriez voir apparaitre sur le labyrinthe (entre 1 et 5): ");
 	scanf("%i",&nb_dodo);
 	gen_points_eau(labyrinthe, nb_eau);
 	gen_points_dodo(labyrinthe, nb_dodo);
-	gen_points_repas(labyrinthe, nb_repas);
+	gen_points_manger(labyrinthe, nb_manger);
 }
 
 /*fonction d'affichage du labyrinthe */
 void affiche_lab(t_case labyrinthe[N][N]){
 	int i = 0, j = 0;
-	for (i = 0, i < N, i++){
+	for (i = 0; i < N; i++){
 		for (j = 0; j < N; j++){
 			switch(labyrinthe[i][j]){
 				case mur:
@@ -155,7 +155,7 @@ void affiche_lab(t_case labyrinthe[N][N]){
 				case eau:
 					printf("o");
 					break;
-				case repas:
+				case manger:
 					printf("R");
 					break;
 				case dodo:
