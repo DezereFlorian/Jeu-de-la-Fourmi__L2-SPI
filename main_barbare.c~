@@ -50,6 +50,18 @@ int nb_fourmi = 0;
 	}
  }
  
+ /*A AJOUTER AU MAKEFILE */
+ /*fonction permettant de verifier si la saisie de l'utilisateur est correcte*/
+ int verif_saisie (int petit, int grand){
+ 	int output = 0;
+ 	scanf("%i", &output);
+ 	while (output < petit || output > grand){
+ 		printf("Entrez une valeur correcte, qui soit comprise entre %i et %i",petit, grand);
+ 		scanf("%i",&output);
+ 	}
+ 	return output;
+ }
+ 
  /* A AJOUTER AU MAKEFILE*/
  /*fonction permettant la recherche de la base du labyrinthe pour le pop des fourmis*/
  void recherche_base(t_case labyrinthe[N][N], int *x, int *y){
@@ -156,11 +168,11 @@ void gen_points (t_case labyrinthe[N][N]){
 	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
 	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
 	printf("\n\nSaisissez le nombre de eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
-	scanf("%i", &nb_eau);
+	nb_eau=verif_saisie(2,7);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");
-	scanf("%i",&nb_manger);
+	nb_manger=verif_saisie(3,8);
 	printf("Saisissez le nombre de dortoir que vous voudriez voir apparaitre sur le labyrinthe (entre 1 et 5): ");
-	scanf("%i",&nb_dodo);
+	nb_dodo=verif_saisie(1,5);
 	gen_points_eau(labyrinthe, nb_eau);
 	gen_points_dodo(labyrinthe, nb_dodo);
 	gen_points_manger(labyrinthe, nb_manger);
@@ -198,7 +210,16 @@ void affiche_lab(t_case labyrinthe[N][N]){
 		printf("\n");
 	}
 }
-/* il faut absolument modifier cette affichage pourri et trouver un truc qui claque !!! */
+
+
+/*A AJOUTER AU MAKEFILE */
+/*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
+void mv_fourmi(t_fourmi population[Z], int a_deplacer){
+	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = base; //traiter en fonction des cas pour que ça devienne base, repas, dodo,eau...
+	population[a_deplacer].y = population[a_deplacer].y+1;//changer le 1 par de combien deplacer
+	population[a_deplacer].x = population[a_deplacer].x+1;
+	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = fourmi;
+}
 
  /* A AJOUTER AU MAKEFILE*/
 /*fonction permettant le pop des fourmis*/
@@ -213,6 +234,7 @@ void gen_fourmi(t_case labyrinthe[N][N], t_fourmi population[Z]){
 	population[nb_fourmi].x = x;
 	population[nb_fourmi].y = y;
 	nb_fourmi++;
+	mv_fourmi(population, population[nb_fourmi].matricule);
 }
 
 int main (void){
@@ -222,7 +244,7 @@ int main (void){
 	gen_labyrinthe(labyrinthe);
 	gen_points(labyrinthe);
 	gen_stock(labyrinthe, stock);
-	gen_fourmi(labyrinthe, population);
+	gen_fourmi(labyrinthe, population); /*A AJOUTER AU MAKEFILE*/
 	affiche_lab(labyrinthe);
 	return EXIT_SUCCESS;
 }
