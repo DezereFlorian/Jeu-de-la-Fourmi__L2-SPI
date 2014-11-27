@@ -20,6 +20,10 @@ t_fourmi population[Z];
  // definition d'une énumération de type t_case pour la création des differentes cases du labyrinthe
  typedef enum {vide, mur, base, eau, dodo, manger, fourmi} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants, ainsi que la fourmi
  
+ /*A AJOUTER AU MAKEFILE*/
+ //definition d'une enumeration correspondant a la direction vers laquelle se deplacer
+ typedef enum {droite, gauche, haut, bas} t_direction; 
+ 
  //definition de la matrice labyrinthe representant la table de jeu de type t_case
  t_case labyrinthe[N][N];
  
@@ -181,9 +185,11 @@ void gen_points (t_case labyrinthe[N][N]){
 /*fonction d'affichage du labyrinthe */
 void affiche_lab(t_case labyrinthe[N][N]){
 	int i = 0, j = 0;
+	t_case tmp;
 	for (i = 0; i < N; i++){
 		for (j = 0; j < N; j++){
-			switch(labyrinthe[i][j]){
+			tmp = labyrinthe[i][j];
+			switch(tmp){
 				case mur:
 					printf("&");
 					break;
@@ -215,9 +221,47 @@ void affiche_lab(t_case labyrinthe[N][N]){
 /*A AJOUTER AU MAKEFILE */
 /*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
 void mv_fourmi(t_fourmi population[Z], int a_deplacer){
-	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = base; //traiter en fonction des cas pour que ça devienne base, repas, dodo,eau...
-	population[a_deplacer].y = population[a_deplacer].y+1;//changer le 1 par de combien deplacer
-	population[a_deplacer].x = population[a_deplacer].x+1;
+	t_direction direction;
+	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = base; //traiter en fonction des cas pour que ça devienne base, repas, dodo,eau...	
+ 	int ok = 0; //ok permet de savoir si le deplacement peut se faire
+ 	int choix;
+ 	//on recupere les coordonnees en x et y de la fourmi dont les deplacements sont a verifier
+ 	//ajouter la verif des murs...
+ 	/*printf("Entrez la direction vers laquelle vous souhaitez que la fourmi se deplace: \n\n");
+ 	scanf("%i", direction);*/
+ 	while (ok == 0){
+ 		printf("Choisissez une direction: \n 1-- gauche\n 2--droite\n 3-- haut\n 4--bas");
+ 		scanf("%i", &choix);
+ 	
+ 		if (choix == 1){
+ 			if (population[a_deplacer].x - 1 >= 0)
+ 				ok = 1;
+ 		} else {
+ 			if (choix == 2){
+ 				if (population[a_deplacer].x + 1 <= 11)
+ 					ok = 1;
+ 			} else {
+ 				if (choix == 4){
+ 					if (population[a_deplacer].y - 1 >= 0)
+ 						ok = 1;
+ 				} else {
+ 					if (population[a_deplacer].y + 1 <= 11)
+ 						ok = 1;
+ 				}
+ 			}
+		}
+	}
+	
+	// A VERIFIER !!!!!!! //
+	switch (choix){
+		case 1 : population[a_deplacer].x = population[a_deplacer].x-1; break;
+		
+		case 2 : population[a_deplacer].x = population[a_deplacer].x+1; break;
+		
+		case 3 : population[a_deplacer].y = population[a_deplacer].y+1; break;
+		
+		case 4 : population[a_deplacer].y = population[a_deplacer].y-1; break;
+	}	
 	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = fourmi;
 }
 
@@ -234,7 +278,6 @@ void gen_fourmi(t_case labyrinthe[N][N], t_fourmi population[Z]){
 	population[nb_fourmi].x = x;
 	population[nb_fourmi].y = y;
 	nb_fourmi++;
-	mv_fourmi(population, population[nb_fourmi].matricule);
 }
 
 int main (void){
@@ -244,7 +287,13 @@ int main (void){
 	gen_labyrinthe(labyrinthe);
 	gen_points(labyrinthe);
 	gen_stock(labyrinthe, stock);
+	affiche_lab(labyrinthe);
 	gen_fourmi(labyrinthe, population); /*A AJOUTER AU MAKEFILE*/
 	affiche_lab(labyrinthe);
+	mv_fourmi(population, population[nb_fourmi].matricule);
+	affiche_lab(labyrinthe);
+	mv_fourmi(population, population[nb_fourmi].matricule);
+	affiche_lab(labyrinthe);
+	
 	return EXIT_SUCCESS;
 }
