@@ -33,6 +33,15 @@ t_fourmi population[Z];
 //definition du nombre de fourmi reellement presente dans le labyrinthe 
 int nb_fourmi = 0;
  
+ 
+ /*A AJOUTER AU MAKEFILE */
+ /* fonction permettant l'affichage d'un certain nombre de ligne vide */
+ void affiche_entrer(int tmp){
+ 	int i = 0;
+ 	for (i = 0; i < tmp; i++){
+ 		printf("\n");
+ 	}
+ }
   /* fonction d'initialisation de la matrice du labyrinthe a vide*/
  void init_labyrinthe(t_case labyrinthe[N][N]){
 	int i = 0, j = 0;
@@ -213,9 +222,9 @@ void affiche_lab(t_case labyrinthe[N][N]){
 					break;
 			}
 		}
-		printf("\n");
+		affiche_entrer(1);
 	}
-	printf("\n");
+	affiche_entrer(1);
 }
 
 
@@ -232,29 +241,20 @@ void mv_fourmi(t_fourmi population[Z], int a_deplacer){
  		printf("\nChoisissez une direction: \n 1-- gauche\n 2--droite\n 3-- haut\n 4--bas\n Votre choix: ");
  		scanf("%i", &choix);	
  		
- 		if (choix == 1){
- 			if (population[a_deplacer].y - 1 >= 0)
- 				ok = 1;
- 		} else {
- 			if (choix == 2){
- 				if (population[a_deplacer].y + 1 <= 11)
- 					ok = 1;
- 			} else {
- 				if (choix == 4){
- 					if (population[a_deplacer].x + 1 <= 11)
- 						ok = 1;
- 				} else {
- 					if (population[a_deplacer].x - 1 >= 0)
- 						ok = 1;
- 				}
- 			}
-		}
+ 		switch (choix){
+ 			case 1 : if (population[a_deplacer].y - 1 >= 0 ) ok = 1; break;
+ 			
+ 			case 2 : if (population[a_deplacer].y + 1 <= 11) ok = 1; break;
+ 			
+ 			case 3: if (population[a_deplacer].x + 1 <= 11) ok = 1; break;
+ 			
+ 			case 4: if (population[a_deplacer].x - 1 >= 0) ok = 1; break;
+ 		}
 		if (ok == 0){
 			printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
 		}
 	}
 	
-	// A VERIFIER !!!!!!! //
 	switch (choix){
 		case 1 : population[a_deplacer].y = population[a_deplacer].y-1; break;
 		
@@ -284,6 +284,7 @@ void gen_fourmi(t_case labyrinthe[N][N], t_fourmi population[Z]){
 
 int main (void){
 	// modif gen fourmi ajouter boucle?
+	affiche_entrer(10);
 	init_labyrinthe(labyrinthe);
 	vide_stock(stock);
 	gen_labyrinthe(labyrinthe);
