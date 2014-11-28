@@ -215,6 +215,7 @@ void affiche_lab(t_case labyrinthe[N][N]){
 		}
 		printf("\n");
 	}
+	printf("\n");
 }
 
 
@@ -227,38 +228,41 @@ void mv_fourmi(t_fourmi population[Z], int a_deplacer){
  	int choix;
  	//on recupere les coordonnees en x et y de la fourmi dont les deplacements sont a verifier
  	//ajouter la verif des murs...*/
- 	while (ok == 0){
- 		printf("Choisissez une direction: \n 1-- gauche\n 2--droite\n 3-- haut\n 4--bas\n Votre choix: ");
- 		scanf("%i", &choix);
- 	
+ 	while (ok == 0){ 
+ 		printf("\nChoisissez une direction: \n 1-- gauche\n 2--droite\n 3-- haut\n 4--bas\n Votre choix: ");
+ 		scanf("%i", &choix);	
+ 		
  		if (choix == 1){
- 			if (population[a_deplacer].x - 1 >= 0)
+ 			if (population[a_deplacer].y - 1 >= 0)
  				ok = 1;
  		} else {
  			if (choix == 2){
- 				if (population[a_deplacer].x + 1 <= 11)
+ 				if (population[a_deplacer].y + 1 <= 11)
  					ok = 1;
  			} else {
  				if (choix == 4){
- 					if (population[a_deplacer].y + 1 <= 11)
+ 					if (population[a_deplacer].x + 1 <= 11)
  						ok = 1;
  				} else {
- 					if (population[a_deplacer].y - 1 >= 0)
+ 					if (population[a_deplacer].x - 1 >= 0)
  						ok = 1;
  				}
  			}
+		}
+		if (ok == 0){
+			printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
 		}
 	}
 	
 	// A VERIFIER !!!!!!! //
 	switch (choix){
-		case 1 : population[a_deplacer].x = population[a_deplacer].y-1; break;
+		case 1 : population[a_deplacer].y = population[a_deplacer].y-1; break;
 		
-		case 2 : population[a_deplacer].x = population[a_deplacer].y+1; break;
+		case 2 : population[a_deplacer].y = population[a_deplacer].y+1; break;
 		
-		case 3 : population[a_deplacer].y = population[a_deplacer].x-1; break;
+		case 3 : population[a_deplacer].x = population[a_deplacer].x-1; break;
 		
-		case 4 : population[a_deplacer].y = population[a_deplacer].x+1; break;
+		case 4 : population[a_deplacer].x = population[a_deplacer].x+1; break;
 	}	
 	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = fourmi;
 }
