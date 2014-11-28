@@ -100,15 +100,15 @@ void gen_labyrinthe(t_case labyrinthe[N][N]){
 	int i = 0, j = 0;
 	//recuperation des murs du labyrinthe avec une boucle do while
 	do {
-	fscanf(fic_mur, "%i", &i);
-	fscanf(fic_mur, "%i", &j);
-	labyrinthe[i][j] = mur;
+		fscanf(fic_mur, "%i", &i);
+		fscanf(fic_mur, "%i", &j);
+		labyrinthe[i][j] = mur;
 	} while (!feof(fic_mur));
 	//recupeartion de la base des fourmis 
 	do {
-	fscanf(fic_base, "%i", &i);
-	fscanf(fic_base, "%i", &j);
-	labyrinthe[i][j] = base;
+		fscanf(fic_base, "%i", &i);
+		fscanf(fic_base, "%i", &j);
+		labyrinthe[i][j] = base;
 	} while (!feof(fic_base));
 	//fermeture des fichiers 
 	fclose(fic_mur);
@@ -226,11 +226,9 @@ void mv_fourmi(t_fourmi population[Z], int a_deplacer){
  	int ok = 0; //ok permet de savoir si le deplacement peut se faire
  	int choix;
  	//on recupere les coordonnees en x et y de la fourmi dont les deplacements sont a verifier
- 	//ajouter la verif des murs...
- 	/*printf("Entrez la direction vers laquelle vous souhaitez que la fourmi se deplace: \n\n");
- 	scanf("%i", direction);*/
+ 	//ajouter la verif des murs...*/
  	while (ok == 0){
- 		printf("Choisissez une direction: \n 1-- gauche\n 2--droite\n 3-- haut\n 4--bas");
+ 		printf("Choisissez une direction: \n 1-- gauche\n 2--droite\n 3-- haut\n 4--bas\n Votre choix: ");
  		scanf("%i", &choix);
  	
  		if (choix == 1){
@@ -242,10 +240,10 @@ void mv_fourmi(t_fourmi population[Z], int a_deplacer){
  					ok = 1;
  			} else {
  				if (choix == 4){
- 					if (population[a_deplacer].y - 1 >= 0)
+ 					if (population[a_deplacer].y + 1 <= 11)
  						ok = 1;
  				} else {
- 					if (population[a_deplacer].y + 1 <= 11)
+ 					if (population[a_deplacer].y - 1 >= 0)
  						ok = 1;
  				}
  			}
@@ -254,13 +252,13 @@ void mv_fourmi(t_fourmi population[Z], int a_deplacer){
 	
 	// A VERIFIER !!!!!!! //
 	switch (choix){
-		case 1 : population[a_deplacer].x = population[a_deplacer].x-1; break;
+		case 1 : population[a_deplacer].x = population[a_deplacer].y-1; break;
 		
-		case 2 : population[a_deplacer].x = population[a_deplacer].x+1; break;
+		case 2 : population[a_deplacer].x = population[a_deplacer].y+1; break;
 		
-		case 3 : population[a_deplacer].y = population[a_deplacer].y+1; break;
+		case 3 : population[a_deplacer].y = population[a_deplacer].x-1; break;
 		
-		case 4 : population[a_deplacer].y = population[a_deplacer].y-1; break;
+		case 4 : population[a_deplacer].y = population[a_deplacer].x+1; break;
 	}	
 	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = fourmi;
 }
