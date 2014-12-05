@@ -11,7 +11,7 @@
 
 /* A AJOUTER AU MAKEFILE*/
 // structure necessaire a la connaissance d'une fourmi, avec sa place en x, y et son numero d'immatriculation
-typedef struct {int matricule; int x; int y;} t_fourmi;//matricule represente le numero de la fourmi, x et y sa position 
+typedef struct {int matricule; int x; int y; int eau; int dodo; int repas; int total_mv;} t_fourmi;//matricule represente le numero de la fourmi, x et y sa position dans le labyrinthe, eau, dodo, repas la quantite d'eau de repas et de dodo que la fourmi possede, total_mv le nombre total de deplacement de la fourmi	
 
 /* A AJOUTER AU MAKEFILE*/
 // tableau de structure permettant de connaitre toutes les fourmis
@@ -223,84 +223,81 @@ void affiche_lab(void){
 
 
 /*A AJOUTER AU MAKEFILE */
-/*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire, renvoi 0 si l'utilisateur veut quiter */
-int mv_fourmi(int a_deplacer){
- 	int choix = 0, x = 0, y = 0, ok = 0; //ok permet de savoir si le deplacement peut se faire
+/*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
+void mv_fourmi(int id_fourmi){
+ 	int choix = 0, x = 0, y = 0, ok = 0, fin_fct = 0; //ok permet de savoir si le deplacement peut se faire, fin_fct permet de savoir si le programme doit continuer
  	//on recupere les coordonnees en x et y de la fourmi dont les deplacements sont a verifier
  	
  	
  	//LES MURS SE DECALENT AVEC LA FOURMI 
- 	x = population[a_deplacer].x;
- 	y = population[a_deplacer].y;
- 	while (ok == 0){ 
- 		printf("\nChoisissez une direction: \n 1-- Gauche\n 2-- Droite\n 3-- Haut\n 4-- Bas\n 5-- Quitter\n Votre choix: ");
- 		scanf("%i", &choix);	
- 		switch (choix){
- 			case 1: if (population[a_deplacer].y - 1 >= 0 && emplacement[x][y-1] != mur) ok = 1; break;
- 			
- 			case 2: if (population[a_deplacer].y + 1 <= 11 && emplacement[x][y+1] != mur) ok = 1; break;
- 			
- 			case 3: if (population[a_deplacer].x + 1 <= 11 && emplacement[x+1][y] != mur) ok = 1; break;
- 			
- 			case 4: if (population[a_deplacer].x - 1 >= 0 && emplacement[x-1][y] != mur) ok = 1; break;
- 			
- 			case 5: return 0; break;
- 		}
- 		
-		if (ok == 0){
-			printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
+ 	x = population[id_fourmi].x;
+ 	y = population[id_fourmi].y;
+ 	while (fin_fct == 0){
+	 	while (ok == 0 && fin_fct == 0){ 
+	 		affiche_lab();
+	 		printf("\nChoisissez une direction: \n 1-- Gauche\n 2-- Droite\n 3-- Haut\n 4-- Bas\n 5-- Quitter\n Votre choix: ");
+	 		scanf("%i", &choix);	
+	 		switch (choix){
+	 			case 1: if (population[id_fourmi].y - 1 >= 0 && emplacement[x][y-1] != mur) ok = 1; break;
+	 			
+	 			case 2: if (population[id_fourmi].y + 1 <= 11 && emplacement[x][y+1] != mur) ok = 1; break;
+	 			
+	 			case 3: if (population[id_fourmi].x + 1 <= 11 && emplacement[x+1][y] != mur) ok = 1; break;
+	 			
+	 			case 4: if (population[id_fourmi].x - 1 >= 0 && emplacement[x-1][y] != mur) ok = 1; break;
+	 			
+	 			case 5: fin_fct = 1; break;
+	 		}
+	 		if (fin_fct == 0 && ok == 1){
+	 		
+	 			labyrinthe[population[id_fourmi].x][population[id_fourmi].y] = vide;
+	 			
+	 			switch (choix){
+					case 1 : population[id_fourmi].y = population[id_fourmi].y-1; break;
+		
+					case 2 : population[id_fourmi].y = population[id_fourmi].y+1; break;
+		
+					case 3 : population[id_fourmi].x = population[id_fourmi].x-1; break;
+		
+					case 4 : population[id_fourmi].x = population[id_fourmi].x+1; break;
+				}
+				
+				labyrinthe[population[id_fourmi].x][population[id_fourmi].y] = fourmi;
+	 		}
+	 		
+			if (ok == 0 && fin_fct == 0){
+				printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
+			}
 		}
+		ok = 0;
 	}
+}
+
+/*fonction permettant de definir une quantite de nourriture que possede la fourmi */
+void gen_stock_fourmi(int id_fourmi){
+	population[id_fourmi].eau = 40;
+}
+
+/*fonction permettant de connaitre l'etat d'une fourmi, sa quantite de repas, d'eau et de sommeil disponible*/
+void etat_fourmi(int id_fourmi){
 	
-	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = vide;
-	
-	switch (choix){
-		case 1 : population[a_deplacer].y = population[a_deplacer].y-1; break;
-		
-		case 2 : population[a_deplacer].y = population[a_deplacer].y+1; break;
-		
-		case 3 : population[a_deplacer].x = population[a_deplacer].x-1; break;
-		
-		case 4 : population[a_deplacer].x = population[a_deplacer].x+1; break;
-	}	
-	
-	labyrinthe[population[a_deplacer].x][population[a_deplacer].y] = fourmi;
-	return 1;
 }
 
  /* A AJOUTER AU MAKEFILE*/
-/*fonction permettant le pop des fourmis*/
+/*fonction permettant le pop des fourmis par l'utilisateur*/
 void gen_fourmi(void){
 	int x = 0, y = 0, i = 0, tmp = 0, fin_prog = 1; //fin_prog permet de savoir si le programme doit se poursuivre
 	recherche_base(&x, &y);
 	printf("Entrez le nombre de fourmi que vous voudriez voir apparaitre sur le labyrinthe (entre 1 et 3): ");
 	tmp = verif_saisie(1,3);
 	for (i = 0; i < tmp; i++){
-		while (fin_prog == 1){
 			labyrinthe[x][y] = fourmi;
-			affiche_lab();
 			population[nb_fourmi].matricule = nb_fourmi;
 			population[nb_fourmi].x = x;
 			population[nb_fourmi].y = y;
-			fin_prog = mv_fourmi(population[nb_fourmi].matricule);
-			/*affiche_lab();
 			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();
-			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();
-			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();
-			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();
-			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();
-			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();
-			mv_fourmi(population[nb_fourmi].matricule);
-			affiche_lab();*/
 			nb_fourmi++;
-		}
-	}	
+	}
 }
 
 int main (void){
@@ -310,13 +307,7 @@ int main (void){
 	gen_labyrinthe();
 	gen_points();
 	gen_stock();
-	affiche_lab();
 	gen_fourmi(); /*A AJOUTER AU MAKEFILE*/
-	/*affiche_lab();
-	mv_fourmi(population[nb_fourmi].matricule);
-	affiche_lab();
-	mv_fourmi(population[nb_fourmi].matricule);
-	affiche_lab();*/
 	
 	return EXIT_SUCCESS;
 }
