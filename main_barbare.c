@@ -221,6 +221,22 @@ void affiche_lab(void){
 	affiche_entrer(2);
 }
 
+/*fonction permettant d'afficher l'etat d'une fourmi, sa quantite de repas, d'eau et de sommeil disponible*/
+void etat_fourmi(int id_fourmi){
+	printf("La fourmi numero %i possede %i quantite d'eau, %i quantite de repas et %i quantite de sommeil",id_fourmi, population[id_fourmi].eau, population[id_fourmi].repas, population[id_fourmi].dodo);
+	
+	if (population[id_fourmi].eau <= 15){
+		printf("Pensez serieusement a vous diriger vers un point d'eau pour recharger votre stock d'eau.");
+	}
+	
+	if (population[id_fourmi].repas <= 20){
+		printf("Pensez serieusement a vous diriger vers un point de repas pour recharger votre stock de repas.");
+	}
+	
+	if (population[id_fourmi].dodo <= 5){
+		printf("Pensez serieusement a vous diriger vers un point de sommeil pour recharger votre stock de sommeil.");
+	}
+}
 
 /*A AJOUTER AU MAKEFILE */
 /*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
@@ -235,8 +251,10 @@ void mv_fourmi(int id_fourmi){
  	while (fin_fct == 0){
 	 	while (ok == 0 && fin_fct == 0){ 
 	 		affiche_lab();
+	 		etat_fourmi(id_fourmi);
 	 		printf("\nChoisissez une direction: \n 1-- Gauche\n 2-- Droite\n 3-- Haut\n 4-- Bas\n 5-- Quitter\n Votre choix: ");
-	 		scanf("%i", &choix);	
+	 		scanf("%i", &choix);
+	 		
 	 		switch (choix){
 	 			case 1: if (population[id_fourmi].y - 1 >= 0 && emplacement[x][y-1] != mur) ok = 1; break;
 	 			
@@ -276,11 +294,8 @@ void mv_fourmi(int id_fourmi){
 /*fonction permettant de definir une quantite de nourriture que possede la fourmi */
 void gen_stock_fourmi(int id_fourmi){
 	population[id_fourmi].eau = 40;
-}
-
-/*fonction permettant de connaitre l'etat d'une fourmi, sa quantite de repas, d'eau et de sommeil disponible*/
-void etat_fourmi(int id_fourmi){
-	
+	population[id_fourmi].repas = 60;
+	population[id_fourmi].dodo = 20;
 }
 
  /* A AJOUTER AU MAKEFILE*/
@@ -295,6 +310,7 @@ void gen_fourmi(void){
 			population[nb_fourmi].matricule = nb_fourmi;
 			population[nb_fourmi].x = x;
 			population[nb_fourmi].y = y;
+			gen_stock_fourmi(population[nb_fourmi].matricule);
 			mv_fourmi(population[nb_fourmi].matricule);
 			nb_fourmi++;
 	}
