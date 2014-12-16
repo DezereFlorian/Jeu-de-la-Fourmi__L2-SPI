@@ -18,9 +18,9 @@ typedef struct {int matricule; int x; int y; int eau; int dodo; int repas; int t
 t_fourmi population[Z];
  
  // definition d'une énumération de type t_case pour la création des differentes cases du labyrinthe
- typedef enum {vide, mur, base, eau, dodo, manger, fourmi} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants, ainsi que la fourmi
+ typedef enum {vide, mur, base, eau, dodo, manger, fourmi, troll_case} t_case; // vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants, ainsi que la fourmi
  
- //definition de la matrice labyrinthe representant la table de jeu dans laquelle est stocke les fourmis et les murs de type t_case
+ //definition de la matrice labyrinthe representant la table de jeu dans laquelle est stocke les fourmis
  t_case labyrinthe[N][N];
  
  //definition de la matrice emplacement permettant de connaitre ce que contient une case du labyrinthe de type t_case
@@ -34,6 +34,12 @@ t_fourmi population[Z];
 int nb_fourmi = 0;
  
  //FOURMI DE MATRICULE 0 EST LA FOURMI DU JOUEUR
+ 
+ 
+ /* fonction permettant de creer l'aleatoire */
+ void aleatoire (void){
+ 	srand(time(NULL));
+ }
  
  /*A AJOUTER AU MAKEFILE */
  /* fonction permettant l'affichage d'un certain nombre de ligne vide */
@@ -134,7 +140,7 @@ void gen_points_eau (int nb_eau){
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_eau; compteur ++){
 		do{
-			i = rand () % 12;
+			i = rand() % 12;
 			j = rand() % 12;
 		}
 		while(emplacement[i][j] != vide);
@@ -149,7 +155,7 @@ void gen_points_manger(int nb_manger){
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_manger; compteur ++){
 		do{
-			i = rand () % 12;
+			i = rand() % 12;
 			j = rand() % 12;
 		}
 		while(emplacement[i][j] != vide);
@@ -164,7 +170,7 @@ void gen_points_dodo (int nb_dodo){
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_dodo; compteur ++){
 		do{
-			i = rand () % 12;
+			i = rand() % 12;
 			j = rand() % 12;
 		}
 		while(emplacement[i][j] != vide);
@@ -172,6 +178,17 @@ void gen_points_dodo (int nb_dodo){
 	}
 }
 
+/*fonction permettant la generation de la troll case, qui peut mettre fin a la partie*/
+void gen_troll_case (void){
+	int j = 0, i = 0;
+	
+	do{
+		i = rand() % 12;
+		j = rand() % 12;
+	}
+	while(emplacement[i][j] != vide);
+	emplacement[i][j] = troll_case;
+}
 
 /* fonction de genration aleatoire des differents points utiles */
 void gen_points (void){
@@ -186,6 +203,7 @@ void gen_points (void){
 	gen_points_eau(nb_eau);
 	gen_points_dodo(nb_dodo);
 	gen_points_manger(nb_manger);
+	gen_troll_case();
 }
 
 /*fonction d'affichage du labyrinthe */
@@ -224,8 +242,8 @@ void affiche_lab(void){
 
 /*fonction permettant d'afficher l'etat d'une fourmi, sa quantite de repas, d'eau et de sommeil disponible*/
 void etat_fourmi(int id_fourmi){
-	printf("La fourmi numero %i possede %i quantite d'eau, %i quantite de repas et %i quantite de sommeil",id_fourmi, population[id_fourmi].eau, population[id_fourmi].repas, population[id_fourmi].dodo);
-	
+	printf("La fourmi numero %i possede %i quantite d'eau, %i quantite de repas et %i quantite de sommeil.",id_fourmi, population[id_fourmi].eau, population[id_fourmi].repas, population[id_fourmi].dodo);
+	affiche_entrer(1);
 	if (population[id_fourmi].eau <= 15){
 		printf("Pensez serieusement a vous diriger vers un point d'eau pour recharger votre stock d'eau.");
 	}
@@ -239,18 +257,30 @@ void etat_fourmi(int id_fourmi){
 	}
 }
 
+/* fonction permettant de verifier si la fourmi peut se deplacer*/
+int verif_deplacement(int id_fourmi){
+	//renvoi vrai si le deplacement peut avoir lieu 
+	if (population[id_fourmi].eau <= 0 || population[id_fourmi].dodo <= 0 || population[id_fourmi].repas <= 0){
+		printf("La fourmi ne peut pas se deplacer, plus assez de ressources...\n");
+		return 0;
+	}
+	else return 1;
+}
+
 /*A AJOUTER AU MAKEFILE */
 /*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
 void mv_fourmi(int id_fourmi){
- 	int choix = 0, x = 0, y = 0, ok = 0, fin_fct = 0; //ok permet de savoir si le deplacement peut se faire, fin_fct permet de savoir si le programme doit continuer, cpt_tour represente le nombre max de tour que peux jouer la fourmi
+ 	int choix = 0, x = 0, y = 0, ok = 0, fin_fct = 0, mouvement = 0; //ok permet de savoir si le deplacement peut se faire, fin_fct permet de savoir si le programme doit continuer, cpt_tour represente le nombre max de tour que peux jouer la fourmi
  	//on recupere les coordonnees en x et y de la fourmi dont les deplacements sont a verifier
  	
- 	
+ 	//remplacer 100 par 5 
  	//LES MURS SE DECALENT AVEC LA FOURMI 
  	x = population[id_fourmi].x;
  	y = population[id_fourmi].y;
- 	while (fin_fct < 5){
-	 	while (ok == 0 && fin_fct < 5){ 
+ 	mouvement = verif_deplacement(id_fourmi);
+ 	if (mouvement == 0) fin_fct = 100;
+ 	while (fin_fct != 100){
+	 	while (ok == 0 && fin_fct != 100){ 
 	 		affiche_lab();
 	 		etat_fourmi(id_fourmi);
 	 		printf("\nChoisissez la direction vers laquelle la fourmi doit aller: \n 1-- Gauche\n 2-- Droite\n 3-- Haut\n 4-- Bas\n 5-- Ne pas bouger\n Votre choix: ");
@@ -265,10 +295,10 @@ void mv_fourmi(int id_fourmi){
 	 			
 	 			case 4: if (population[id_fourmi].x - 1 >= 0 && emplacement[x-1][y] != mur) ok = 1; break;
 	 			
-	 			case 5: fin_fct = 5; break;
+	 			case 5: fin_fct = 100; break;
 	 		}
-	 		if (fin_fct < 5 && ok == 1){
-	 		
+	 		if (fin_fct != 100 && ok == 1){
+	 
 	 			labyrinthe[population[id_fourmi].x][population[id_fourmi].y] = vide;
 	 			
 	 			switch (choix){
@@ -284,12 +314,26 @@ void mv_fourmi(int id_fourmi){
 				labyrinthe[population[id_fourmi].x][population[id_fourmi].y] = fourmi;
 				
 				population[id_fourmi].total_mv = population[id_fourmi].total_mv + 1;
-	 		}
+				
+				if (population[id_fourmi].total_mv%2 == 0){
+					population[id_fourmi].eau = population[id_fourmi].eau - 1;
+					
+				}
+				
+				if (population[id_fourmi].total_mv%5 == 0){
+					population[id_fourmi].dodo = population[id_fourmi].dodo - 1;
+				}
+				
+				population[id_fourmi].repas = population[id_fourmi].repas - 1;
+			}
 	 		
-			if (ok == 0 && fin_fct < 5){
+			if (ok == 0 && fin_fct != 100){
 				printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
 			}
 			fin_fct++;
+			
+			mouvement = verif_deplacement(id_fourmi);
+			if (mouvement == 0) fin_fct = 100;
 		}
 		ok = 0;
 	}
@@ -298,7 +342,7 @@ void mv_fourmi(int id_fourmi){
 /*fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possede la fourmi */
 void gen_stock_fourmi(int id_fourmi){
 	population[id_fourmi].eau = 40;
-	population[id_fourmi].repas = 60;
+	population[id_fourmi].repas = 5;
 	population[id_fourmi].dodo = 20;
 }
 
@@ -323,6 +367,7 @@ void gen_fourmi(void){
 
 int main (void){
 	affiche_entrer(50);
+	aleatoire();
 	init_labyrinthe();
 	vide_stock();
 	gen_labyrinthe();
