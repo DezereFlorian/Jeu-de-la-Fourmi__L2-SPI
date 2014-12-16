@@ -3,17 +3,20 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 
 int main(int argc, char *argv[])
 {
     SDL_Surface *ecran = NULL,
                 *imageDeFond = NULL,
+                *imageDeFondMenu = NULL,
                 *zozor = NULL,
                 *eau = NULL,
                 *nourriture = NULL,
                 *lit = NULL,
                 *jouer = NULL,
                 *regle = NULL,
+                *imageRegle = NULL,
                 *quitter = NULL;
 
     SDL_Rect positionFond,
@@ -23,9 +26,15 @@ int main(int argc, char *argv[])
              positionNourriture,
              positionJouer,
              positionRegle,
+             positionImageRegle,
              positionQuitter;
 
-    TTF_Font *police = NULL;
+    TTF_Font *police = NULL,
+             *policeRegle = NULL;
+
+    Mix_Music *musique,
+              *musiqueRegle,
+              *musiqueMenu;
 
     SDL_Color couleurNoire = {0, 0, 0};
 
@@ -44,6 +53,10 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError()); // Écriture de l'erreur
         exit(EXIT_FAILURE); // On quitte le programme
     }
+        else if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+        {
+            printf("%s", Mix_GetError());
+        }
 
         else  if(TTF_Init() == -1)
         {
@@ -54,7 +67,8 @@ int main(int argc, char *argv[])
             else
             {
             /* Titre de la fenêtre */
-            SDL_WM_SetCaption("Labyrinthe", NULL);
+            SDL_WM_SetCaption("Le Labyzor", NULL);
+
 
 
              /* Chargement de l'icône  */
@@ -63,20 +77,34 @@ int main(int argc, char *argv[])
             /* Choisir la taille de l'écran */
             ecran = SDL_SetVideoMode(1020, 720, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 
-            SDL_WM_SetCaption("Chargement d'images en SDL", NULL);
+
 
             /* Chargement d'images Bitmap dans une surface */
+            imageDeFondMenu = IMG_Load("image/FondMenu.png");
+
             imageDeFond = IMG_Load("image/Fond.png");
+
             zozor = IMG_Load("image/zozor.png");
+
             eau = IMG_Load("image/eau.png");
             lit = IMG_Load("image/lit.png");
             nourriture = IMG_Load("image/carotte.png");
 
             /* Chargement de la police */
-            police = TTF_OpenFont("texte/angelina.ttf", 65);
+            police = TTF_OpenFont("texte/angelina.ttf", 80);
+            policeRegle = TTF_OpenFont("texte/angelina.ttf", 60);
+
+
+
+
             jouer = TTF_RenderText_Blended(police, "Jouer", couleurNoire);
             regle = TTF_RenderText_Blended(police, "Regle", couleurNoire);
             quitter = TTF_RenderText_Blended(police, "Quitter", couleurNoire);
+
+            musique = Mix_LoadMUS("musique/libere_delivre.mp3");
+            musiqueRegle = Mix_LoadMUS("musique/Hip_Hop_Chicken.mp3");
+            musiqueMenu = Mix_LoadMUS("musique/Mexican.mp3");
+            Mix_VolumeMusic(MIX_MAX_VOLUME / 8); //Mettre le volume à la moitié
 
             positionFond.x = 0;
             positionFond.y = 0;
@@ -89,12 +117,13 @@ int main(int argc, char *argv[])
 
 
 
-            positionJouer.x = 320;
-            positionJouer.y = 150;
-            positionRegle.x = 400;
-            positionRegle.y = 300;
-            positionQuitter.x = 480;
-            positionQuitter.y = 460;
+            positionJouer.x = 430;
+            positionJouer.y = 390;
+            positionRegle.x = 130;
+            positionRegle.y = 120;
+
+            positionQuitter.x = 740;
+            positionQuitter.y = 550;
 
             positionZozor.x =  ecran->w / 2 - zozor->w / 2;
             positionZozor.y = ecran->h / 2 - zozor->h / 2;
@@ -107,10 +136,12 @@ int main(int argc, char *argv[])
             SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 33, 185, 29));
 
             /* Blit du texte sur l'ecran */
-            SDL_BlitSurface(imageDeFond, NULL, ecran, &positionFond);
+            SDL_BlitSurface(imageDeFondMenu, NULL, ecran, &positionFond);
             SDL_BlitSurface(jouer, NULL, ecran, &positionJouer);
             SDL_BlitSurface(regle, NULL, ecran, &positionRegle);
             SDL_BlitSurface(quitter, NULL, ecran, &positionQuitter);
+
+            Mix_PlayMusic(musiqueMenu, -1);
             /* mis à jour de l'écran */
             SDL_Flip(ecran);
 
@@ -138,6 +169,9 @@ int main(int argc, char *argv[])
                                                     SDL_BlitSurface(nourriture, NULL, ecran, &positionNourriture);
                                                     SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
 
+
+                                                    Mix_PlayMusic(musique, -1);
+
                                                     while(continuer)
                                                         {
                                                             SDL_WaitEvent(&event);
@@ -151,26 +185,33 @@ int main(int argc, char *argv[])
                                                                     switch(event.key.keysym.sym)
                                                                     {
                                                                         case SDLK_UP:
-
-                                                                            positionZozor.y = positionZozor.y-8;
+                                                                            if(positionZozor.y > 50){
+                                                                            positionZozor.y = positionZozor.y-4;
+                                                                            }
 
                                                                             break;
                                                                         case SDLK_DOWN:
-
-                                                                            positionZozor.y = positionZozor.y+8;
-
-                                                                            break;
-                                                                        case SDLK_RIGHT:
-
-                                                                            positionZozor.x = positionZozor.x+8;
+                                                                            if(positionZozor.y < 620){
+                                                                            positionZozor.y = positionZozor.y+4;
+                                                                            }
 
                                                                             break;
                                                                         case SDLK_LEFT:
+                                                                            if(positionZozor.x > 50){
+                                                                            positionZozor.x = positionZozor.x-4;
+                                                                            }
 
-                                                                            positionZozor.x = positionZozor.x-8;
+                                                                            break;
+                                                                        case SDLK_RIGHT:
+                                                                            if(positionZozor.x < 920){
+                                                                            positionZozor.x = positionZozor.x+4;
+                                                                            }
 
                                                                             break;
 
+                                                                        case SDLK_ESCAPE:
+                                                                            continuer = 0;
+                                                                            break;
 
                                                                     }
                                                                 break;
@@ -191,6 +232,15 @@ int main(int argc, char *argv[])
                                        case SDLK_r:
                                                     SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 33, 185, 29));
                                                     SDL_BlitSurface(imageDeFond, NULL, ecran, &positionFond);
+                                                    Mix_PlayMusic(musiqueRegle, -1);
+                                                    jouer = TTF_RenderText_Blended(policeRegle, "Jouer", couleurNoire);
+
+                                                    positionImageRegle.x = 50;
+                                                    positionImageRegle.y = 50;
+                                                    positionJouer.x = 460;
+                                                    positionJouer.y = 600;
+                                                    SDL_BlitSurface(jouer, NULL, ecran, &positionJouer);
+                                                    SDL_BlitSurface(imageRegle, NULL, ecran, &positionImageRegle);
                                                     SDL_Flip(ecran);
 
                                         break;
@@ -225,12 +275,14 @@ int main(int argc, char *argv[])
                 SDL_FreeSurface(jouer);
                 SDL_FreeSurface(regle);
                 SDL_FreeSurface(quitter);
+                Mix_FreeMusic(musique);
                 TTF_CloseFont(police);
 
 
             }
-            SDL_Quit();
+            Mix_CloseAudio();
             TTF_Quit();
+            SDL_Quit();
             return EXIT_SUCCESS;
 
 }

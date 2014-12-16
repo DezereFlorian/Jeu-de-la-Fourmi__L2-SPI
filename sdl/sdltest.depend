@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1417113060 source:d:\fac\algo\sdltest\main.c
+1418744678 source:d:\fac\algo\sdltest\main.c
 	<stdlib.h>
 	<stdio.h>
-	<SDL/SDL.h>
+	<SDL.h>
 	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 
 1325738640 c:\program files (x86)\codeblocks\sdl-1.2.15\include\sdl\sdl.h
 	"SDL_main.h"
@@ -390,4 +392,28 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1325793194 c:\program files (x86)\codeblocks\sdl-1.2.15\include\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1417779011 source:d:\fac\algo\sdltest\menu.c
+	<stdlib.h>
+	<stdio.h>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
+1325789340 c:\program files (x86)\codeblocks\sdl-1.2.15\include\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\program files (x86)\codeblocks\sdl-1.2.15\include\sdl_types.h
+	"SDL_stdinc.h"
 
