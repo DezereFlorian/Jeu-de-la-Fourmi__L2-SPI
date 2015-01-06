@@ -42,7 +42,7 @@ void gen_points_eau (int nb_eau){
 }
 
 /*fonction de genration des differents points de manger dans le labyrinthe */
-void gen_points_manger(int nb_manger){
+void gen_points_repas(int nb_manger){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de manger*/
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_manger; compteur ++){
