@@ -302,7 +302,11 @@ void gen_points_repas(int nb_manger){
 	}
 }
 
-
+/**
+*\fn void gen_points_dodo (int nb_dodo)
+*\brief Fonction de generation des differents points de dodo dans le labyrinthe
+*\param int nb_dodo nombre de point pour dormir a généré
+*/
 /*fonction de genration des differents points de dodo dans le labyrinthe */
 void gen_points_dodo (int nb_dodo){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de dodo*/
@@ -317,6 +321,11 @@ void gen_points_dodo (int nb_dodo){
 	}
 }
 
+
+/**
+*\fn void gen_points (void)
+*\brief Fonction de generation aleatoire des differents points utiles
+*/
 /* fonction de genration aleatoire des differents points utiles */
 void gen_points (void){
 	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
