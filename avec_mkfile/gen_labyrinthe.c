@@ -1,8 +1,20 @@
-/* Page contenant les fonctions relatives a la creation du labyrinthe, et la mise en place des points strategiques */
+/**
+* \file gen_labyrinthe.c
+* \brief Page contenant les fonctions relatives a la creation du labyrinthe, et la mise en place des points strategiques
+* \author Jean-baptiste Dubois, Provost Valentin, Dezere Florian
+* \version 1.0
+* \date 6 Janvier 2014
+*
+*/
+
+
 
 #include "header.h"
 
-
+/**
+*\fn void init_matrice()
+*\brief Fonction permettant de generer aleatoirement un labyrinthe, pas eu le temps de l'ajouter au moteur.c
+*/
 /* Fonction permettant de generer aleatoirement un labyrinthe, pas eu le temps de l'ajouter au moteur.c
 void init_matrice() //initialise la matrice entière, en attribuant tous les murs, en attribuant les coordonnées de ladite case, et en notant ce qu'elle contient. Sans stock pour le moment puisqu'elles sont toutes vides.
 {
@@ -69,7 +81,7 @@ void afficher()
 }
 
 bool verif_voisin() // vérifie pour chaque voisin si celui-ci a tous ses murs, puis les ajoute dans un tableau de voisins vers lesquels casser un mur. Si aucun voisin n'a tous ses murs, renvoie 0
-{	
+{
 	int x = cc.i;
 	int y = cc.j;
 	if(x+1<N)
@@ -119,10 +131,10 @@ void supprimer_mur()
 {
 	int x1 = cc.i;
 	int x2 = casetmp.i;
-	
+
 	int y1 = cc.j;
 	int y2 = casetmp.j;
-	
+
 	if(x1>x2) //si le déplacement se fait vers le haut
 	{
 		cc.haut = false;
@@ -186,19 +198,19 @@ int pilevide()
     return (sommet== -1);
 }
 
-int main(int argc, char *argv[]) 
-{	
+int main(int argc, char *argv[])
+{
 	srand(time(NULL));
-	
+
 	init_matrice();
-	
+
 	choisir_case();
 	// ces deux lignes seront à retirer pour l'affichage en SDL
 	afficher();
 	printf("\n\n\n___________________________________\n\n\n");
-	
+
 	empiler(cc);
-	
+
 	while(!pilevide()) //tant que la pile n'est pas vide, ça veut dire qu'il reste potentiellement des cases non accessibles
 	{
 		if(verif_voisin())
@@ -220,11 +232,14 @@ int main(int argc, char *argv[])
 	}
 	//ligne à retirer ou adapter pour l'affichage en SDL
 	afficher();
-	
+
 }*/
 
+/**
+*\fn void gen_labyrinthe(void)
+*\brief Fonction de generation du labyrinthe
+*/
 
-/* fonction de genration du labyrinthe*/
 void gen_labyrinthe(void){
 	//declaration des variables necessaire au traitement
 	FILE* fic_mur = fopen("init_mur_lab.txt", "r"); // permet la recuperation des murs du labyrinthe
@@ -236,19 +251,24 @@ void gen_labyrinthe(void){
 	fscanf(fic_mur, "%i", &j);
 	labyrinthe[i][j] = mur;
 	} while (!feof(fic_mur));
-	//recupeartion de la base des fourmis 
+	//recupeartion de la base des fourmis
 	do {
 	fscanf(fic_base, "%i", &i);
 	fscanf(fic_base, "%i", &j);
 	labyrinthe[i][j] = base;
 	} while (!feof(fic_base));
-	//fermeture des fichiers 
+	//fermeture des fichiers
 	fclose(fic_mur);
 	fclose(fic_base);
 }
 
+/**
+*\fn void gen_points_eau (int nb_eau)
+*\brief Fonction de genration des differents points d'eau dans le labyrinthe
+*\param int nb_eau nombre de point d'eau a généré
+*/
 
-/*fonction de genration des differents points d'eau dans le labyrinthe */
+
 void gen_points_eau (int nb_eau){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point d'eau*/
 	int compteur = 0;
@@ -262,7 +282,13 @@ void gen_points_eau (int nb_eau){
 	}
 }
 
-/*fonction de genration des differents points de manger dans le labyrinthe */
+
+/**
+*\fn void gen_points_repas(int nb_manger)
+*\brief Fonction de generation des differents points de manger dans le labyrinthe
+*\param int nb_manger nombre de point pour manger a généré
+*/
+
 void gen_points_repas(int nb_manger){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de manger*/
 	int compteur = 0;
