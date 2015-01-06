@@ -273,6 +273,11 @@ int end_game(void){
 	return sortie = rand() %6 + 1;
 }
 
+/*fonction permettant de trouver un chemin pour la fourmi IA*/
+void recherche_chemin(int id_fourmi){
+	
+}
+
 /*A AJOUTER AU MAKEFILE */
 /*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
 void mv_fourmi(int id_fourmi){
