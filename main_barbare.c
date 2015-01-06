@@ -334,7 +334,7 @@ void mv_fourmi(int id_fourmi){
 						population[id_fourmi].dodo = 0;
 					}
 					
-					afficher_entrer(3);
+					affiche_entrer(3);
 					printf("PERDU! Sans visiblement aucune raison apparente... dommage pour vous");
 				}
 				
@@ -376,11 +376,11 @@ void gen_stock_fourmi(int id_fourmi){
  /* A AJOUTER AU MAKEFILE*/
 /*fonction permettant le pop des fourmis*/
 void gen_fourmi(void){
-	int x = 0, y = 0, i = 0, tmp = 0; //fin_prog permet de savoir si le programme doit se poursuivre
+	int x = 0, y = 0 /*,i = 0, tmp = 0*/;
 	recherche_base(&x, &y);
-	printf("Entrez le nombre de fourmi que vous voudriez voir apparaitre sur le labyrinthe en plus de celle que vous controlerez (entre 1 et 3): ");
-	tmp = verif_saisie(1,3);
-	for (i = 0; i < tmp; i++){
+	//printf("Entrez le nombre de fourmi que vous voudriez voir apparaitre sur le labyrinthe en plus de celle que vous controlerez (entre 1 et 3): ");
+	//tmp = verif_saisie(1,3);
+	//for (i = 0; i < tmp; i++){
 			labyrinthe[x][y] = fourmi;
 			population[nb_fourmi].matricule = nb_fourmi;
 			population[nb_fourmi].x = x;
@@ -389,7 +389,7 @@ void gen_fourmi(void){
 			gen_stock_fourmi(population[nb_fourmi].matricule);
 			mv_fourmi(population[nb_fourmi].matricule);
 			nb_fourmi++;
-	}
+	//}
 }
 
 int main (void){
