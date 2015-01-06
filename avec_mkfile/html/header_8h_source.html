@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>Projet informatique:  Fichier source de header.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Projet informatique
+   </div>
+   <div id="projectbrief">Projet de L2 SPI</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">header.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Header contenant les definition des fonctions necessaire au main.c </span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;      <span class="comment">// definition des bibliotheques a inclure pour le bon fonctionnement du programme</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span> <span class="comment">//importation necessaire pour la fonction rand </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; <span class="comment">//definition des variables globales</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"> #define N 12 // taille du labyrinthe en largeur et longueur</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"> #define Z 50 // taille du tableau de populaton, soit un maximum de 50 fourmi dans le tableau A AJOUTER</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// structure necessaire a la connaissance d&#39;une fourmi, avec sa place en x, y et son numero d&#39;immatriculation</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structt__fourmi.html">   16</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{<span class="keywordtype">int</span> matricule; <span class="keywordtype">int</span> x; <span class="keywordtype">int</span> y; <span class="keywordtype">int</span> eau; <span class="keywordtype">int</span> dodo; <span class="keywordtype">int</span> repas; <span class="keywordtype">int</span> total_mv;} <a class="code" href="structt__fourmi.html">t_fourmi</a>;<span class="comment">//matricule represente le numero de la fourmi, x et y sa position dans le labyrinthe, eau, dodo, repas la quantite d&#39;eau de repas et de dodo que la fourmi possede, total_mv le nombre total de deplacement de la fourmi</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// tableau de structure permettant de connaitre toutes les fourmis</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="structt__fourmi.html">t_fourmi</a> population[Z];</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span class="comment">// definition d&#39;une énumération de type t_case pour la création des differentes cases du labyrinthe</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; <span class="keyword">typedef</span> <span class="keyword">enum</span> {vide, mur, base, eau, dodo, manger, fourmi, troll_case} t_case; <span class="comment">// vide correspond a une case vide, mur a un mur, eau dodo et manger à differents point importants, ainsi que la fourmi</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; <span class="comment">//definition de la matrice labyrinthe representant la table de jeu dans laquelle est stocke les fourmis</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; t_case labyrinthe[N][N];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span class="comment">//definition de la matrice emplacement permettant de connaitre ce que contient une case du labyrinthe de type t_case</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; <span class="comment">//contient murs, bases, eau, dodo, repas</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; t_case emplacement[N][N];</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; <span class="comment">//definition de la matrice stock contenant les stocks des points utiles du jeu de type int</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; <span class="keywordtype">int</span> stock[N][N];</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">//definition du nombre de fourmi reellement presente dans le labyrinthe </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">int nb_fourmi = 0;*/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; <span class="comment">//declaration de toutes les fonctions du programmes</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; <span class="keywordtype">void</span> init_labyrinthe(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; <span class="keywordtype">void</span> vide_stock(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; <span class="keywordtype">void</span> <a class="code" href="gen__labyrinthe_8c.html#a19f3e01f44b59e829cc792a8fd740228">gen_labyrinthe</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; <span class="keywordtype">void</span> <a class="code" href="affichage_8c.html#a42ec04270a0e1a044bcbec3d08bc9f0a">affiche_lab</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; <span class="keywordtype">void</span> <a class="code" href="gen__labyrinthe_8c.html#afe6bbf858e6995f440df1523eef19bc8">gen_points_eau</a> (<span class="keywordtype">int</span> nb_eau);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; <span class="keywordtype">void</span> <a class="code" href="gen__labyrinthe_8c.html#a3dbb394bcc0a6496cfd3b905ab8b6c6c">gen_points_repas</a> (<span class="keywordtype">int</span> nb_repas);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; <span class="keywordtype">void</span> gen_points_dodo (<span class="keywordtype">int</span> nb_dodo);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <span class="keywordtype">void</span> gen_points (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; <span class="keywordtype">void</span> gen_stock (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; <span class="keywordtype">void</span> <a class="code" href="fourmi_8c.html#ae621d3f12ff30448e45c4e134d049b03">gen_fourmi</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; <span class="keywordtype">void</span> <a class="code" href="fourmi_8c.html#ae0cc7c685736b97de5cd92845f3730d3">gen_stock_fourmi</a>(<span class="keywordtype">int</span> id_fourmi);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; <span class="keywordtype">void</span> <a class="code" href="deplacement_8c.html#a851f3d658198e4622f03e2d8a7faec14">mv_fourmi</a>(<span class="keywordtype">int</span> id_fourmi);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; <span class="keywordtype">int</span> <a class="code" href="fin__de__jeu_8c.html#a5b977cd2b36e961cb4b9382e91ade34b">end_game</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; <span class="keywordtype">int</span> <a class="code" href="deplacement_8c.html#a022b37db62e51a6efc03eee80cda50cd">verif_deplacement</a>(<span class="keywordtype">int</span> id_fourmi);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; <span class="keywordtype">void</span> <a class="code" href="fourmi_8c.html#add23d0755a1059dab2f4e326d1c8f2c5">etat_fourmi</a>(<span class="keywordtype">int</span> id_fourmi);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; <span class="keywordtype">void</span> <a class="code" href="fin__de__jeu_8c.html#ad9fd7e15b3676ff1d6f05821968adf54">gen_troll_case</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; <span class="keywordtype">void</span> <a class="code" href="fourmi_8c.html#a85661a77431adbf32f45d1b707c270e2">recherche_base</a>(<span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; <span class="keywordtype">int</span> verif_saisie (<span class="keywordtype">int</span> petit, <span class="keywordtype">int</span> grand);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; <span class="keywordtype">void</span> <a class="code" href="affichage_8c.html#afdabedbdaec06f1a4ab234044b4df6fc">affiche_entrer</a>(<span class="keywordtype">int</span> tmp);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; <span class="keywordtype">void</span> <a class="code" href="aleatoire_8c.html#aaeeedbd134251291fe79c71c943ec899">aleatoire</a> (<span class="keywordtype">void</span>);</div>
+<div class="ttc" id="fourmi_8c_html_add23d0755a1059dab2f4e326d1c8f2c5"><div class="ttname"><a href="fourmi_8c.html#add23d0755a1059dab2f4e326d1c8f2c5">etat_fourmi</a></div><div class="ttdeci">void etat_fourmi(int id_fourmi)</div><div class="ttdoc">Fonction permettant d&#39;afficher l&#39;etat de Zozor, sa quantite de repas, d&#39;eau et de sommeil disponible...</div><div class="ttdef"><b>Definition:</b> fourmi.c:56</div></div>
+<div class="ttc" id="gen__labyrinthe_8c_html_afe6bbf858e6995f440df1523eef19bc8"><div class="ttname"><a href="gen__labyrinthe_8c.html#afe6bbf858e6995f440df1523eef19bc8">gen_points_eau</a></div><div class="ttdeci">void gen_points_eau(int nb_eau)</div><div class="ttdoc">Fonction de genration des differents points d&#39;eau dans le labyrinthe. </div><div class="ttdef"><b>Definition:</b> gen_labyrinthe.c:272</div></div>
+<div class="ttc" id="gen__labyrinthe_8c_html_a19f3e01f44b59e829cc792a8fd740228"><div class="ttname"><a href="gen__labyrinthe_8c.html#a19f3e01f44b59e829cc792a8fd740228">gen_labyrinthe</a></div><div class="ttdeci">void gen_labyrinthe(void)</div><div class="ttdoc">Fonction de generation du labyrinthe. </div><div class="ttdef"><b>Definition:</b> gen_labyrinthe.c:243</div></div>
+<div class="ttc" id="fourmi_8c_html_ae0cc7c685736b97de5cd92845f3730d3"><div class="ttname"><a href="fourmi_8c.html#ae0cc7c685736b97de5cd92845f3730d3">gen_stock_fourmi</a></div><div class="ttdeci">void gen_stock_fourmi(int id_fourmi)</div><div class="ttdoc">Fonction permettant de definir une quantite de nourriture, d&#39;eau, de dodo que possede Zozor...</div><div class="ttdef"><b>Definition:</b> fourmi.c:43</div></div>
+<div class="ttc" id="fin__de__jeu_8c_html_ad9fd7e15b3676ff1d6f05821968adf54"><div class="ttname"><a href="fin__de__jeu_8c.html#ad9fd7e15b3676ff1d6f05821968adf54">gen_troll_case</a></div><div class="ttdeci">void gen_troll_case(void)</div><div class="ttdoc">Fonction permettant la generation de la troll case, qui peut mettre fin a la partie. </div><div class="ttdef"><b>Definition:</b> fin_de_jeu.c:32</div></div>
+<div class="ttc" id="deplacement_8c_html_a022b37db62e51a6efc03eee80cda50cd"><div class="ttname"><a href="deplacement_8c.html#a022b37db62e51a6efc03eee80cda50cd">verif_deplacement</a></div><div class="ttdeci">int verif_deplacement(int id_fourmi)</div><div class="ttdoc">Fonction permettant de verifier si Zozor peut se deplacer. </div><div class="ttdef"><b>Definition:</b> deplacement.c:21</div></div>
+<div class="ttc" id="fourmi_8c_html_ae621d3f12ff30448e45c4e134d049b03"><div class="ttname"><a href="fourmi_8c.html#ae621d3f12ff30448e45c4e134d049b03">gen_fourmi</a></div><div class="ttdeci">void gen_fourmi(void)</div><div class="ttdoc">Fonction permettant le pop des fourmis. </div><div class="ttdef"><b>Definition:</b> fourmi.c:19</div></div>
+<div class="ttc" id="structt__fourmi_html"><div class="ttname"><a href="structt__fourmi.html">t_fourmi</a></div><div class="ttdef"><b>Definition:</b> header.h:16</div></div>
+<div class="ttc" id="deplacement_8c_html_a851f3d658198e4622f03e2d8a7faec14"><div class="ttname"><a href="deplacement_8c.html#a851f3d658198e4622f03e2d8a7faec14">mv_fourmi</a></div><div class="ttdeci">void mv_fourmi(int id_fourmi)</div><div class="ttdoc">Fonction permettant le deplacement des fourmis dans le labyrinthe de fa�on aleatoire. </div><div class="ttdef"><b>Definition:</b> deplacement.c:37</div></div>
+<div class="ttc" id="gen__labyrinthe_8c_html_a3dbb394bcc0a6496cfd3b905ab8b6c6c"><div class="ttname"><a href="gen__labyrinthe_8c.html#a3dbb394bcc0a6496cfd3b905ab8b6c6c">gen_points_repas</a></div><div class="ttdeci">void gen_points_repas(int nb_manger)</div><div class="ttdoc">Fonction de generation des differents points de manger dans le labyrinthe. </div><div class="ttdef"><b>Definition:</b> gen_labyrinthe.c:292</div></div>
+<div class="ttc" id="fourmi_8c_html_a85661a77431adbf32f45d1b707c270e2"><div class="ttname"><a href="fourmi_8c.html#a85661a77431adbf32f45d1b707c270e2">recherche_base</a></div><div class="ttdeci">void recherche_base(int *x, int *y)</div><div class="ttdoc">Fonction permettant la recherche de la base du labyrinthe pour le pop de Zozor. </div><div class="ttdef"><b>Definition:</b> fourmi.c:79</div></div>
+<div class="ttc" id="fin__de__jeu_8c_html_a5b977cd2b36e961cb4b9382e91ade34b"><div class="ttname"><a href="fin__de__jeu_8c.html#a5b977cd2b36e961cb4b9382e91ade34b">end_game</a></div><div class="ttdeci">int end_game(void)</div><div class="ttdoc">Fonction permettant de savoir si la troll case met fin a la partie. </div><div class="ttdef"><b>Definition:</b> fin_de_jeu.c:20</div></div>
+<div class="ttc" id="affichage_8c_html_a42ec04270a0e1a044bcbec3d08bc9f0a"><div class="ttname"><a href="affichage_8c.html#a42ec04270a0e1a044bcbec3d08bc9f0a">affiche_lab</a></div><div class="ttdeci">void affiche_lab(void)</div><div class="ttdoc">Fonction d&#39;affichage du labyrinthe. </div><div class="ttdef"><b>Definition:</b> affichage.c:19</div></div>
+<div class="ttc" id="aleatoire_8c_html_aaeeedbd134251291fe79c71c943ec899"><div class="ttname"><a href="aleatoire_8c.html#aaeeedbd134251291fe79c71c943ec899">aleatoire</a></div><div class="ttdeci">void aleatoire(void)</div><div class="ttdoc">Fonction permettant de creer l&#39;aleatoire. </div><div class="ttdef"><b>Definition:</b> aleatoire.c:19</div></div>
+<div class="ttc" id="affichage_8c_html_afdabedbdaec06f1a4ab234044b4df6fc"><div class="ttname"><a href="affichage_8c.html#afdabedbdaec06f1a4ab234044b4df6fc">affiche_entrer</a></div><div class="ttdeci">void affiche_entrer(int tmp)</div><div class="ttdoc">Fonction permettant l&#39;affichage d&#39;un certain nombre de ligne vide. </div><div class="ttdef"><b>Definition:</b> affichage.c:58</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Mardi 6 Janvier 2015 17:26:10 pour Projet informatique par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>
