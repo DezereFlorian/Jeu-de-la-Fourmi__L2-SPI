@@ -267,10 +267,16 @@ int verif_deplacement(int id_fourmi){
 	else return 1;
 }
 
+/* fonction permettant de savoir si la troll case met fin a la partie */
+int end_game(void){
+	int sortie = 0;
+	return sortie = rand() %6 + 1;
+}
+
 /*A AJOUTER AU MAKEFILE */
 /*fonction permettant le deplacement des fourmis dans le labyrinthe de facon aleatoire */
 void mv_fourmi(int id_fourmi){
- 	int choix = 0, x = 0, y = 0, ok = 0, fin_fct = 0, mouvement = 0; //ok permet de savoir si le deplacement peut se faire, fin_fct permet de savoir si le programme doit continuer, cpt_tour represente le nombre max de tour que peux jouer la fourmi
+ 	int choix = 0, x = 0, y = 0, ok = 0, fin_fct = 0, mouvement = 0, fin_jeu = 0; //ok permet de savoir si le deplacement peut se faire, fin_fct permet de savoir si le programme doit continuer, mouvement permet de savoir si une fourmi a assez de ressource pour se deplacer
  	//on recupere les coordonnees en x et y de la fourmi dont les deplacements sont a verifier
  	
  	//remplacer 100 par 5 
@@ -284,7 +290,7 @@ void mv_fourmi(int id_fourmi){
 	 		affiche_lab();
 	 		etat_fourmi(id_fourmi);
 	 		printf("\nChoisissez la direction vers laquelle la fourmi doit aller: \n 1-- Gauche\n 2-- Droite\n 3-- Haut\n 4-- Bas\n 5-- Ne pas bouger\n Votre choix: ");
-	 		scanf("%i", &choix);
+	 		choix = verif_saisie(1,5);
 	 		
 	 		switch (choix){
 	 			case 1: if (population[id_fourmi].y - 1 >= 0 && emplacement[x][y-1] != mur) ok = 1; break;
@@ -313,6 +319,20 @@ void mv_fourmi(int id_fourmi){
 				
 				labyrinthe[population[id_fourmi].x][population[id_fourmi].y] = fourmi;
 				
+				if (emplacement[population[id_fourmi].x][population[id_fourmi].y] == troll_case){
+					
+					fin_jeu = end_game();
+					
+					if (fin_jeu >= 3){
+						population[id_fourmi].eau = 0;
+						population[id_fourmi].repas = 0;
+						population[id_fourmi].dodo = 0;
+					}
+					
+					afficher_entrer(3);
+					printf("PERDU! Sans visiblement aucune raison apparente... dommage pour vous");
+				}
+				
 				population[id_fourmi].total_mv = population[id_fourmi].total_mv + 1;
 				
 				if (population[id_fourmi].total_mv%2 == 0){
@@ -327,13 +347,15 @@ void mv_fourmi(int id_fourmi){
 				population[id_fourmi].repas = population[id_fourmi].repas - 1;
 			}
 	 		
-			if (ok == 0 && fin_fct != 100){
-				printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
-			}
-			fin_fct++;
+			else {
+				if (ok == 0 && fin_fct != 100){
+					printf("\nLa fourmi ne peut satisfaire votre demande de deplacement, veuillez entrez une nouvelle direction:\n");
+				}
+				fin_fct++;
 			
-			mouvement = verif_deplacement(id_fourmi);
-			if (mouvement == 0) fin_fct = 100;
+				mouvement = verif_deplacement(id_fourmi);
+				if (mouvement == 0) fin_fct = 100;
+			}
 		}
 		ok = 0;
 	}
@@ -342,12 +364,12 @@ void mv_fourmi(int id_fourmi){
 /*fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possede la fourmi */
 void gen_stock_fourmi(int id_fourmi){
 	population[id_fourmi].eau = 40;
-	population[id_fourmi].repas = 5;
+	population[id_fourmi].repas = 30;
 	population[id_fourmi].dodo = 20;
 }
 
  /* A AJOUTER AU MAKEFILE*/
-/*fonction permettant le pop des fourmis par l'utilisateur*/
+/*fonction permettant le pop des fourmis*/
 void gen_fourmi(void){
 	int x = 0, y = 0, i = 0, tmp = 0; //fin_prog permet de savoir si le programme doit se poursuivre
 	recherche_base(&x, &y);
@@ -377,3 +399,6 @@ int main (void){
 	
 	return EXIT_SUCCESS;
 }
+
+//AJOUTER LA RECHERCHE DE CHEMIN PAR LA FOURMI BOT
+
