@@ -1,9 +1,21 @@
-/* Page contenant les fonctions relatives a la de la fourmi et de tout ce qui y touche */
+/**
+* \file fourmi.c
+* \brief Page contenant les fonctions relatives a la de la fourmi et de tout ce qui y touche
+* \author Jean-baptiste Dubois, Provost Valentin, Dezere Florian
+* \version 1.0
+* \date 6 Janvier 2014
+*
+*/
+
 
 #include "header.h"
 
+/**
+*\fn void gen_fourmi(void)
+*\brief Fonction permettant le pop des fourmis
+*/
 
-/*fonction permettant le pop des fourmis*/
+
 void gen_fourmi(void){
 	int x = 0, y = 0, i = 0, tmp = 0; //fin_prog permet de savoir si le programme doit se poursuivre
 	recherche_base(&x, &y);
@@ -21,31 +33,49 @@ void gen_fourmi(void){
 	}
 }
 
-/*fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possede la fourmi */
+
+/**
+*\fn void gen_stock_fourmi(int id_fourmi)
+*\brief Fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possede Zozor
+*\param int id_fourmi est l'identifiant de Zozor
+*/
+
 void gen_stock_fourmi(int id_fourmi){
 	population[id_fourmi].eau = 40;
 	population[id_fourmi].repas = 30;
 	population[id_fourmi].dodo = 20;
 }
 
-/*fonction permettant d'afficher l'etat d'une fourmi, sa quantite de repas, d'eau et de sommeil disponible*/
+
+/**
+*\fn void etat_fourmi(int id_fourmi)
+*\brief Fonction permettant d'afficher l'etat de Zozor, sa quantite de repas, d'eau et de sommeil disponible
+*\param int id_fourmi est l'identifiant de Zozor
+*/
+
 void etat_fourmi(int id_fourmi){
 	printf("La fourmi numero %i possede %i quantite d'eau, %i quantite de repas et %i quantite de sommeil.",id_fourmi, population[id_fourmi].eau, population[id_fourmi].repas, population[id_fourmi].dodo);
 	affiche_entrer(1);
 	if (population[id_fourmi].eau <= 15){
 		printf("Pensez serieusement a vous diriger vers un point d'eau pour recharger votre stock d'eau.");
 	}
-	
+
 	if (population[id_fourmi].repas <= 20){
 		printf("Pensez serieusement a vous diriger vers un point de repas pour recharger votre stock de repas.");
 	}
-	
+
 	if (population[id_fourmi].dodo <= 5){
 		printf("Pensez serieusement a vous diriger vers un point de sommeil pour recharger votre stock de sommeil.");
 	}
 }
 
- /*fonction permettant la recherche de la base du labyrinthe pour le pop des fourmis*/
+
+/**
+*\fn  void recherche_base(int *x, int *y)
+*\brief Fonction permettant la recherche de la base du labyrinthe pour le pop de Zozor
+*\param int *x, int *y  sont des pointeurs qui permettent de récuperer les valeurs pour la base
+*/
+
  void recherche_base(int *x, int *y){
  	int i = 0, j = 0;
 	for (i = 0; i < N; i++){
