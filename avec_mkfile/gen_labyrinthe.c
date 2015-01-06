@@ -4,7 +4,7 @@
 
 
 /* fonction de genration du labyrinthe*/
-void gen_labyrinthe(t_case labyrinthe[N][N]){
+void gen_labyrinthe(void){
 	//declaration des variables necessaire au traitement
 	FILE* fic_mur = fopen("init_mur_lab.txt", "r"); // permet la recuperation des murs du labyrinthe
 	FILE* fic_base = fopen("init_base_lab.txt", "r"); //permet de recuperer la base de pop des fourmis
@@ -28,69 +28,60 @@ void gen_labyrinthe(t_case labyrinthe[N][N]){
 
 
 /*fonction de genration des differents points d'eau dans le labyrinthe */
-void gen_points_eau (t_case labyrinthe[N][N], int nb_eau){
+void gen_points_eau (int nb_eau){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point d'eau*/
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_eau; compteur ++){
-		i = rand () % 12;
-		j = rand () % 12;
-		if (labyrinthe[i][j] != vide){
-			while (labyrinthe[i][j] != vide){
-				i = rand () % 12;
-				j = rand () % 12;
-			}
+		do{
+			i = rand() % 12;
+			j = rand() % 12;
 		}
-		labyrinthe[i][j] = eau;
+		while(emplacement[i][j] != vide);
+		emplacement[i][j] = eau;
 	}
 }
 
-/*fonction de genration des differents points de repas dans le labyrinthe */
-void gen_points_repas(t_case labyrinthe[N][N], int nb_repas){
-	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de repas*/
+/*fonction de genration des differents points de manger dans le labyrinthe */
+void gen_points_manger(int nb_manger){
+	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de manger*/
 	int compteur = 0;
-	for (compteur = 0; compteur < nb_repas; compteur ++){
-		i = rand () % 12;
-		j = rand () % 12;
-		if (labyrinthe[i][j] != vide){
-			while (labyrinthe[i][j] != vide){
-				i = rand () % 12;
-				j = rand () % 12;
-			}
+	for (compteur = 0; compteur < nb_manger; compteur ++){
+		do{
+			i = rand() % 12;
+			j = rand() % 12;
 		}
-		labyrinthe[i][j] = repas;
+		while(emplacement[i][j] != vide);
+		emplacement[i][j] = manger;
 	}
 }
 
 
 /*fonction de genration des differents points de dodo dans le labyrinthe */
-void gen_points_dodo (t_case labyrinthe[N][N], int nb_dodo){
+void gen_points_dodo (int nb_dodo){
 	int i = 0, j =0; /*declaration des variables permettant de stocker les coordonnees d'un point de dodo*/
 	int compteur = 0;
 	for (compteur = 0; compteur < nb_dodo; compteur ++){
-		i = rand () % 12;
-		j = rand () % 12;
-		if (labyrinthe[i][j] != vide){
-			while (labyrinthe[i][j] != vide){
-				i = rand () % 12;
-				j = rand () % 12;
-			}
+		do{
+			i = rand() % 12;
+			j = rand() % 12;
 		}
-		labyrinthe[i][j] = dodo;
+		while(emplacement[i][j] != vide);
+		emplacement[i][j] = dodo;
 	}
 }
 
-
 /* fonction de genration aleatoire des differents points utiles */
-void gen_points (t_case labyrinthe[N][N]){
-	int nb_repas = 0, nb_dodo = 0, nb_eau = 0;
-	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques\n\n");
-	printf("\nSaisissez le nombre de point d'eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
-	scanf("%i", &nb_eau);
+void gen_points (void){
+	int nb_manger = 0, nb_dodo = 0, nb_eau = 0;
+	printf("Passons maintenant a la genration des differents points utiles comme les dortoirs, les points d'eaux, les pique-niques");
+	printf("\n\nSaisissez le nombre de eau que vous voudriez voir apparaitre sur le labyrinthe (entre 2 et 7): ");
+	nb_eau=verif_saisie(2,7);
 	printf("Saisissez le nombre de pique-niques que vous voudriez voir apparaitre sur le labyrinthe (entre 3 et 8): ");
-	scanf("%i",&nb_repas);
+	nb_manger=verif_saisie(3,8);
 	printf("Saisissez le nombre de dortoir que vous voudriez voir apparaitre sur le labyrinthe (entre 1 et 5): ");
-	scanf("%i",&nb_dodo);
-	gen_points_eau(labyrinthe, nb_eau);
-	gen_points_dodo(labyrinthe, nb_dodo);
-	gen_points_repas(labyrinthe, nb_repas);
+	nb_dodo=verif_saisie(1,5);
+	gen_points_eau(nb_eau);
+	gen_points_dodo(nb_dodo);
+	gen_points_repas(nb_manger);
+	gen_troll_case();
 }
