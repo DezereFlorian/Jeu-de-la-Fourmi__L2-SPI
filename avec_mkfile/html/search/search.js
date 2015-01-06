@@ -7,10 +7,11 @@
 
 var indexSectionsWithContent =
 {
-  0: "adefgimrstv",
+  0: "adefghimrstv",
   1: "t",
-  2: "adfgmsv",
-  3: "aegimrv"
+  2: "adfghmsv",
+  3: "aegimrv",
+  4: "t"
 };
 
 var indexSectionNames =
@@ -18,7 +19,8 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "functions"
+  3: "functions",
+  4: "enums"
 };
 
 function convertToId(search)

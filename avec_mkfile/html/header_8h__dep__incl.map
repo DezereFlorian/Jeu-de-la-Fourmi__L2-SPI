@@ -1,0 +1,13 @@
+<map id="header.h" name="header.h">
+<area shape="rect" id="node2" href="$affichage_8c.html" title="Definition des fonctions d&#39;affichage. " alt="" coords="5,80,92,107"/>
+<area shape="rect" id="node3" href="$aleatoire_8c.html" title="Page permettant de creer de l&#39;aleatoire. " alt="" coords="117,80,199,107"/>
+<area shape="rect" id="node4" href="$deplacement_8c.html" title="Page contenant le deplacement de Zozor. " alt="" coords="223,80,330,107"/>
+<area shape="rect" id="node5" href="$fin__de__jeu_8c.html" title="Page contenant la fin de jeu. " alt="" coords="355,80,447,107"/>
+<area shape="rect" id="node6" href="$fourmi_8c.html" title="Page contenant les fonctions relatives a la de la fourmi et de tout ce qui y touche. " alt="" coords="471,80,541,107"/>
+<area shape="rect" id="node7" href="$gen__fourmi_8c.html" title="Page contenant les fonctions relatives a la de Zozor et de tout ce qui y touche. " alt="" coords="565,80,663,107"/>
+<area shape="rect" id="node8" href="$gen__labyrinthe_8c.html" title="Page contenant les fonctions relatives a la creation du labyrinthe, et la mise en place des points st..." alt="" coords="687,80,805,107"/>
+<area shape="rect" id="node9" href="$main_8c.html" title="Simulation de la vie d&#39;un groupe de Zozor dans un labyrinthe. " alt="" coords="829,80,890,107"/>
+<area shape="rect" id="node10" href="$mise__a__0_8c.html" title="Définition des fonctions de mise a zero d&#39;une matrice, ou de mise a l&#39;état vide. " alt="" coords="915,80,1004,107"/>
+<area shape="rect" id="node11" href="$stock_8c.html" title="Définition des fonctions permettant de gerer les stocks de chaques points, de la création au retrait..." alt="" coords="1028,80,1093,107"/>
+<area shape="rect" id="node12" href="$verification__saisie_8c.html" title="Page permettant de vérifier la saisie de l&#39;utilisateur. " alt="" coords="1117,80,1255,107"/>
+</map>

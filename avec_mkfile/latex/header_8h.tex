@@ -1,0 +1,326 @@
+\hypertarget{header_8h}{\section{Référence du fichier header.\+h}
+\label{header_8h}\index{header.\+h@{header.\+h}}
+}
+
+
+Header contenant les definition des fonctions necessaire au \hyperlink{main_8c}{main.\+c}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+Graphe des dépendances par inclusion de header.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{header_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{header_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structt__fourmi}{t\+\_\+fourmi}
+\begin{DoxyCompactList}\small\item\em structure necessaire a la connaissance de Zozor, avec sa place en x, y et son numero d'immatriculation \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{header_8h_a0240ac851181b84ac374872dc5434ee4}{\#define {\bfseries N}~12}\label{header_8h_a0240ac851181b84ac374872dc5434ee4}
+
+\item 
+\hypertarget{header_8h_a51591cf51bdd6c1f6015532422e7770e}{\#define {\bfseries Z}~50}\label{header_8h_a51591cf51bdd6c1f6015532422e7770e}
+
+\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{header_8h_ab21a60e1517c8d253cc83c12f6e027f3}{enum \hyperlink{header_8h_ab21a60e1517c8d253cc83c12f6e027f3}{t\+\_\+case} \{ \\*
+{\bfseries vide}, 
+{\bfseries mur}, 
+{\bfseries base}, 
+{\bfseries eau}, 
+\\*
+{\bfseries dodo}, 
+{\bfseries manger}, 
+{\bfseries fourmi}, 
+{\bfseries troll\+\_\+case}
+ \}}\label{header_8h_ab21a60e1517c8d253cc83c12f6e027f3}
+
+\begin{DoxyCompactList}\small\item\em definition d'une énumération de type t\+\_\+case pour la création des differentes cases du labyrinthe \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{header_8h_a1c2fa03ead9cabe7107805a0388ed268}{void \hyperlink{header_8h_a1c2fa03ead9cabe7107805a0388ed268}{init\+\_\+labyrinthe} (void)}\label{header_8h_a1c2fa03ead9cabe7107805a0388ed268}
+
+\begin{DoxyCompactList}\small\item\em Fonction d'initialisation de la matrice du labyrinthe a vide. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_a10e7f695f5aa9fec445332d9f45593f5}{void {\bfseries vide\+\_\+stock} (void)}\label{header_8h_a10e7f695f5aa9fec445332d9f45593f5}
+
+\item 
+\hypertarget{header_8h_a19f3e01f44b59e829cc792a8fd740228}{void \hyperlink{header_8h_a19f3e01f44b59e829cc792a8fd740228}{gen\+\_\+labyrinthe} (void)}\label{header_8h_a19f3e01f44b59e829cc792a8fd740228}
+
+\begin{DoxyCompactList}\small\item\em Fonction de generation du labyrinthe. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_a42ec04270a0e1a044bcbec3d08bc9f0a}{void \hyperlink{header_8h_a42ec04270a0e1a044bcbec3d08bc9f0a}{affiche\+\_\+lab} (void)}\label{header_8h_a42ec04270a0e1a044bcbec3d08bc9f0a}
+
+\begin{DoxyCompactList}\small\item\em Fonction d'affichage du labyrinthe. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_afe6bbf858e6995f440df1523eef19bc8}{gen\+\_\+points\+\_\+eau} (int nb\+\_\+eau)
+\begin{DoxyCompactList}\small\item\em Fonction de genration des differents points d'eau dans le labyrinthe. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_ac944966f1f411455d5d9e1428e4d927d}{gen\+\_\+points\+\_\+repas} (int nb\+\_\+repas)
+\begin{DoxyCompactList}\small\item\em Fonction de generation des differents points de manger dans le labyrinthe. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_adb09e0b6478d231ae9eb6898b6fc1686}{gen\+\_\+points\+\_\+dodo} (int nb\+\_\+dodo)
+\begin{DoxyCompactList}\small\item\em Fonction de generation des differents points de dodo dans le labyrinthe. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_a72aad31dcd4e03575625ae0c64520761}{void \hyperlink{header_8h_a72aad31dcd4e03575625ae0c64520761}{gen\+\_\+points} (void)}\label{header_8h_a72aad31dcd4e03575625ae0c64520761}
+
+\begin{DoxyCompactList}\small\item\em Fonction de generation aleatoire des differents points utiles. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_ae2c76cb469b294db918d9f761ba445f9}{void {\bfseries gen\+\_\+stock} (void)}\label{header_8h_ae2c76cb469b294db918d9f761ba445f9}
+
+\item 
+void \hyperlink{header_8h_ae621d3f12ff30448e45c4e134d049b03}{gen\+\_\+fourmi} (void)
+\begin{DoxyCompactList}\small\item\em Fonction permettant le pop des fourmis. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_ae0cc7c685736b97de5cd92845f3730d3}{gen\+\_\+stock\+\_\+fourmi} (int id\+\_\+fourmi)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possede Zozor. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_a851f3d658198e4622f03e2d8a7faec14}{mv\+\_\+fourmi} (int id\+\_\+fourmi)
+\begin{DoxyCompactList}\small\item\em Fonction permettant le deplacement des fourmis dans le labyrinthe de fa�on aleatoire. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_a5b977cd2b36e961cb4b9382e91ade34b}{int \hyperlink{header_8h_a5b977cd2b36e961cb4b9382e91ade34b}{end\+\_\+game} (void)}\label{header_8h_a5b977cd2b36e961cb4b9382e91ade34b}
+
+\begin{DoxyCompactList}\small\item\em Fonction permettant de savoir si la troll case met fin a la partie. \end{DoxyCompactList}\item 
+int \hyperlink{header_8h_a022b37db62e51a6efc03eee80cda50cd}{verif\+\_\+deplacement} (int id\+\_\+fourmi)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de verifier si Zozor peut se deplacer. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_add23d0755a1059dab2f4e326d1c8f2c5}{etat\+\_\+fourmi} (int id\+\_\+fourmi)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d'afficher l'etat de Zozor, sa quantite de repas, d'eau et de sommeil disponible. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_ad9fd7e15b3676ff1d6f05821968adf54}{void \hyperlink{header_8h_ad9fd7e15b3676ff1d6f05821968adf54}{gen\+\_\+troll\+\_\+case} (void)}\label{header_8h_ad9fd7e15b3676ff1d6f05821968adf54}
+
+\begin{DoxyCompactList}\small\item\em Fonction permettant la generation de la troll case, qui peut mettre fin a la partie. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_a85661a77431adbf32f45d1b707c270e2}{recherche\+\_\+base} (int $\ast$x, int $\ast$y)
+\begin{DoxyCompactList}\small\item\em Fonction permettant la recherche de la base du labyrinthe pour le pop de Zozor. \end{DoxyCompactList}\item 
+int \hyperlink{header_8h_a5d77334ef0eb544c90e47f78b6e898cd}{verif\+\_\+saisie} (int petit, int grand)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de verifier si la saisie de l'utilisateur est correcte. \end{DoxyCompactList}\item 
+void \hyperlink{header_8h_afdabedbdaec06f1a4ab234044b4df6fc}{affiche\+\_\+entrer} (int tmp)
+\begin{DoxyCompactList}\small\item\em Fonction permettant l'affichage d'un certain nombre de ligne vide. \end{DoxyCompactList}\item 
+\hypertarget{header_8h_aaeeedbd134251291fe79c71c943ec899}{void \hyperlink{header_8h_aaeeedbd134251291fe79c71c943ec899}{aleatoire} (void)}\label{header_8h_aaeeedbd134251291fe79c71c943ec899}
+
+\begin{DoxyCompactList}\small\item\em Fonction permettant de creer l'aleatoire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{header_8h_ae63cd84fc42fbad761b2ec07b238d9f3}{\hyperlink{structt__fourmi}{t\+\_\+fourmi} {\bfseries population} \mbox{[}Z\mbox{]}}\label{header_8h_ae63cd84fc42fbad761b2ec07b238d9f3}
+
+\item 
+\hypertarget{header_8h_a2143372ed5e7e6c3e275568a5a62f085}{\hyperlink{header_8h_ab21a60e1517c8d253cc83c12f6e027f3}{t\+\_\+case} {\bfseries labyrinthe} \mbox{[}N\mbox{]}\mbox{[}N\mbox{]}}\label{header_8h_a2143372ed5e7e6c3e275568a5a62f085}
+
+\item 
+\hypertarget{header_8h_a3bd8eb4406b8694c8f4ce3496e52ea2d}{\hyperlink{header_8h_ab21a60e1517c8d253cc83c12f6e027f3}{t\+\_\+case} {\bfseries emplacement} \mbox{[}N\mbox{]}\mbox{[}N\mbox{]}}\label{header_8h_a3bd8eb4406b8694c8f4ce3496e52ea2d}
+
+\item 
+\hypertarget{header_8h_a6a30c7798b4d072c13948aeca1de524e}{int {\bfseries stock} \mbox{[}N\mbox{]}\mbox{[}N\mbox{]}}\label{header_8h_a6a30c7798b4d072c13948aeca1de524e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Header contenant les definition des fonctions necessaire au \hyperlink{main_8c}{main.\+c}. 
+
+\begin{DoxyAuthor}{Auteur}
+Jean-\/baptiste Dubois, Provost Valentin, Dezere Florian 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+6 Janvier 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{header_8h_afdabedbdaec06f1a4ab234044b4df6fc}{\index{header.\+h@{header.\+h}!affiche\+\_\+entrer@{affiche\+\_\+entrer}}
+\index{affiche\+\_\+entrer@{affiche\+\_\+entrer}!header.\+h@{header.\+h}}
+\subsubsection[{affiche\+\_\+entrer}]{\setlength{\rightskip}{0pt plus 5cm}void affiche\+\_\+entrer (
+\begin{DoxyParamCaption}
+\item[{int}]{tmp}
+\end{DoxyParamCaption}
+)}}\label{header_8h_afdabedbdaec06f1a4ab234044b4df6fc}
+
+
+Fonction permettant l'affichage d'un certain nombre de ligne vide. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & tmp nombre de retour chariot � afficher \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_add23d0755a1059dab2f4e326d1c8f2c5}{\index{header.\+h@{header.\+h}!etat\+\_\+fourmi@{etat\+\_\+fourmi}}
+\index{etat\+\_\+fourmi@{etat\+\_\+fourmi}!header.\+h@{header.\+h}}
+\subsubsection[{etat\+\_\+fourmi}]{\setlength{\rightskip}{0pt plus 5cm}void etat\+\_\+fourmi (
+\begin{DoxyParamCaption}
+\item[{int}]{id\+\_\+fourmi}
+\end{DoxyParamCaption}
+)}}\label{header_8h_add23d0755a1059dab2f4e326d1c8f2c5}
+
+
+Fonction permettant d'afficher l'etat de Zozor, sa quantite de repas, d'eau et de sommeil disponible. 
+
+fonction permettant d'afficher l'etat de Zozor, sa quantite de repas, d'eau et de sommeil disponible
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & id\+\_\+fourmi est l'identifiant de Zozor \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_ae621d3f12ff30448e45c4e134d049b03}{\index{header.\+h@{header.\+h}!gen\+\_\+fourmi@{gen\+\_\+fourmi}}
+\index{gen\+\_\+fourmi@{gen\+\_\+fourmi}!header.\+h@{header.\+h}}
+\subsubsection[{gen\+\_\+fourmi}]{\setlength{\rightskip}{0pt plus 5cm}void gen\+\_\+fourmi (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{header_8h_ae621d3f12ff30448e45c4e134d049b03}
+
+
+Fonction permettant le pop des fourmis. 
+
+fonction permettant le pop de Zozor \hypertarget{header_8h_adb09e0b6478d231ae9eb6898b6fc1686}{\index{header.\+h@{header.\+h}!gen\+\_\+points\+\_\+dodo@{gen\+\_\+points\+\_\+dodo}}
+\index{gen\+\_\+points\+\_\+dodo@{gen\+\_\+points\+\_\+dodo}!header.\+h@{header.\+h}}
+\subsubsection[{gen\+\_\+points\+\_\+dodo}]{\setlength{\rightskip}{0pt plus 5cm}void gen\+\_\+points\+\_\+dodo (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\+\_\+dodo}
+\end{DoxyParamCaption}
+)}}\label{header_8h_adb09e0b6478d231ae9eb6898b6fc1686}
+
+
+Fonction de generation des differents points de dodo dans le labyrinthe. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & nb\+\_\+dodo nombre de point pour dormir a généré \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_afe6bbf858e6995f440df1523eef19bc8}{\index{header.\+h@{header.\+h}!gen\+\_\+points\+\_\+eau@{gen\+\_\+points\+\_\+eau}}
+\index{gen\+\_\+points\+\_\+eau@{gen\+\_\+points\+\_\+eau}!header.\+h@{header.\+h}}
+\subsubsection[{gen\+\_\+points\+\_\+eau}]{\setlength{\rightskip}{0pt plus 5cm}void gen\+\_\+points\+\_\+eau (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\+\_\+eau}
+\end{DoxyParamCaption}
+)}}\label{header_8h_afe6bbf858e6995f440df1523eef19bc8}
+
+
+Fonction de genration des differents points d'eau dans le labyrinthe. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & nb\+\_\+eau nombre de point d'eau a généré \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_ac944966f1f411455d5d9e1428e4d927d}{\index{header.\+h@{header.\+h}!gen\+\_\+points\+\_\+repas@{gen\+\_\+points\+\_\+repas}}
+\index{gen\+\_\+points\+\_\+repas@{gen\+\_\+points\+\_\+repas}!header.\+h@{header.\+h}}
+\subsubsection[{gen\+\_\+points\+\_\+repas}]{\setlength{\rightskip}{0pt plus 5cm}void gen\+\_\+points\+\_\+repas (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\+\_\+manger}
+\end{DoxyParamCaption}
+)}}\label{header_8h_ac944966f1f411455d5d9e1428e4d927d}
+
+
+Fonction de generation des differents points de manger dans le labyrinthe. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & nb\+\_\+manger nombre de point pour manger a généré \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_ae0cc7c685736b97de5cd92845f3730d3}{\index{header.\+h@{header.\+h}!gen\+\_\+stock\+\_\+fourmi@{gen\+\_\+stock\+\_\+fourmi}}
+\index{gen\+\_\+stock\+\_\+fourmi@{gen\+\_\+stock\+\_\+fourmi}!header.\+h@{header.\+h}}
+\subsubsection[{gen\+\_\+stock\+\_\+fourmi}]{\setlength{\rightskip}{0pt plus 5cm}void gen\+\_\+stock\+\_\+fourmi (
+\begin{DoxyParamCaption}
+\item[{int}]{id\+\_\+fourmi}
+\end{DoxyParamCaption}
+)}}\label{header_8h_ae0cc7c685736b97de5cd92845f3730d3}
+
+
+Fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possede Zozor. 
+
+Fonction permettant de definir une quantite de nourriture, d'eau, de dodo que poss�de Zozor.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & id\+\_\+fourmi est l'identifiant de Zozor \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_a851f3d658198e4622f03e2d8a7faec14}{\index{header.\+h@{header.\+h}!mv\+\_\+fourmi@{mv\+\_\+fourmi}}
+\index{mv\+\_\+fourmi@{mv\+\_\+fourmi}!header.\+h@{header.\+h}}
+\subsubsection[{mv\+\_\+fourmi}]{\setlength{\rightskip}{0pt plus 5cm}void mv\+\_\+fourmi (
+\begin{DoxyParamCaption}
+\item[{int}]{id\+\_\+fourmi}
+\end{DoxyParamCaption}
+)}}\label{header_8h_a851f3d658198e4622f03e2d8a7faec14}
+
+
+Fonction permettant le deplacement des fourmis dans le labyrinthe de fa�on aleatoire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & id\+\_\+fourmi est l'identifiant de Zozor \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_a85661a77431adbf32f45d1b707c270e2}{\index{header.\+h@{header.\+h}!recherche\+\_\+base@{recherche\+\_\+base}}
+\index{recherche\+\_\+base@{recherche\+\_\+base}!header.\+h@{header.\+h}}
+\subsubsection[{recherche\+\_\+base}]{\setlength{\rightskip}{0pt plus 5cm}void recherche\+\_\+base (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{x, }
+\item[{int $\ast$}]{y}
+\end{DoxyParamCaption}
+)}}\label{header_8h_a85661a77431adbf32f45d1b707c270e2}
+
+
+Fonction permettant la recherche de la base du labyrinthe pour le pop de Zozor. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & $\ast$x, int $\ast$y sont des pointeurs qui permettent de r�cuperer les valeurs pour la base \\
+\hline
+\end{DoxyParams}
+\hypertarget{header_8h_a022b37db62e51a6efc03eee80cda50cd}{\index{header.\+h@{header.\+h}!verif\+\_\+deplacement@{verif\+\_\+deplacement}}
+\index{verif\+\_\+deplacement@{verif\+\_\+deplacement}!header.\+h@{header.\+h}}
+\subsubsection[{verif\+\_\+deplacement}]{\setlength{\rightskip}{0pt plus 5cm}int verif\+\_\+deplacement (
+\begin{DoxyParamCaption}
+\item[{int}]{id\+\_\+fourmi}
+\end{DoxyParamCaption}
+)}}\label{header_8h_a022b37db62e51a6efc03eee80cda50cd}
+
+
+Fonction permettant de verifier si Zozor peut se deplacer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & id\+\_\+fourmi est l'identifiant de Zozor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+renvoi vrai si le d�placement peut avoir lieu sinon faux 
+\end{DoxyReturn}
+\hypertarget{header_8h_a5d77334ef0eb544c90e47f78b6e898cd}{\index{header.\+h@{header.\+h}!verif\+\_\+saisie@{verif\+\_\+saisie}}
+\index{verif\+\_\+saisie@{verif\+\_\+saisie}!header.\+h@{header.\+h}}
+\subsubsection[{verif\+\_\+saisie}]{\setlength{\rightskip}{0pt plus 5cm}int verif\+\_\+saisie (
+\begin{DoxyParamCaption}
+\item[{int}]{petit, }
+\item[{int}]{grand}
+\end{DoxyParamCaption}
+)}}\label{header_8h_a5d77334ef0eb544c90e47f78b6e898cd}
+
+
+Fonction permettant de verifier si la saisie de l'utilisateur est correcte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em int} & petit, int grand param�tre pour verifier si le nombre entrer n'est pas trop grand ou trop petit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+renvoi le nombre entrer par l'utilisateur 
+\end{DoxyReturn}
