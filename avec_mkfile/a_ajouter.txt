@@ -1,0 +1,3 @@
+
+24 tours = 1 jour, et 3 tours de dodo par jour 
+fourmi ne peut porter que 8 unites de eau ou repas (enlever stock)

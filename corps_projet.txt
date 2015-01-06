@@ -1,0 +1,39 @@
+﻿Plan du rapport :
+
+Page de titre (1 page : Flo)
+
+Sommaire (1 page : Valou)
+
+Introduction (1 page : JB)
+Description du sujet, et ce qu'on comptait rajouter
+
+Organisation du travail : (1 page : Flo)
+- JB : SDL
+- Valoche : Génération aléatoire du labyrinthe
+- Bull : Moteur du programme
+- Diagramme de Gantt  → pas de planning
+
+Analyse du problème : (2 pages -peut-être 3- Flo)
+Avec JB et Val qui vont rajouter leurs explications du code qu'ils ont produit.
+CAHIER DES CHARGES
+
+Codage (5/6 pages où chacun fait sa partie)
+-JB détaille la SDL 
+-Valou détaille le labyrinthe (la génération aléatoire)
+-Flo détaille le moteur et le .h
+-
+Résultats (3 pages, se concerter pour la fin de la rédaction)
+Pas de planning (expliquer pourquoi)
+Les fonctions du programme sont-elles finies ?
+Améliorations
+Regard critique
+
+Conclusion (1-2 pages)
+Que nous a apporté le projet, est-il à refaire ? À améliorer ? 
+Le travail en groupe était-il bien ? Bonne entente ?
+
+Annexes 
+Exemple de CUnit.
+Lien vers le Slide
+Lien vers le Doxyfile
+Lien vers le Github
