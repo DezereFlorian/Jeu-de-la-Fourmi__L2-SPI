@@ -1,4 +1,4 @@
-labyrinthe : main.o affichage.o stock.o mise_a_0.o gen_labyrinthe.o fourmi.o deplacement.o fin_de_jeu.o verification_saisie.c aleatoire.c
+labyzor.exe : main.o affichage.o stock.o mise_a_0.o gen_labyrinthe.o fourmi.o deplacement.o fin_de_jeu.o verification_saisie.c aleatoire.c
 	gcc -o labyrinthe main.o affichage.o stock.o mise_a_0.o gen_labyrinthe.o fourmi.o deplacement.o fin_de_jeu.o verification_saisie.c aleatoire.c
 	
 main.o : main.c
