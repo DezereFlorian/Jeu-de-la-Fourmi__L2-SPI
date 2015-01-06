@@ -6,11 +6,14 @@
 
 
 int main (void){
-	init_labyrinthe(labyrinthe);
-	vide_stock(stock);
-	gen_labyrinthe(labyrinthe);
-	gen_points(labyrinthe);
-	gen_stock(labyrinthe, stock);
-	affiche_lab(labyrinthe);
+	affiche_entrer(50);
+	aleatoire();
+	init_labyrinthe();
+	vide_stock();
+	gen_labyrinthe();
+	gen_points();
+	gen_stock();
+	gen_fourmi();
+	
 	return EXIT_SUCCESS;
 }
