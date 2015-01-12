@@ -12,7 +12,8 @@
 #include "header.h"
 
 
-int main (void){
+int main (void)
+{
 	affiche_entrer(50);
 	aleatoire();
 	init_labyrinthe();
