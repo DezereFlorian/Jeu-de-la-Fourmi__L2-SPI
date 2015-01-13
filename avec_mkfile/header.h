@@ -48,10 +48,6 @@ t_fourmi population[Z];
  //definition de la matrice stock contenant les stocks des points utiles du jeu de type int
  int stock[N][N];
 
-/*
-//definition du nombre de fourmi reellement presente dans le labyrinthe
-int nb_fourmi = 0;*/
-
  //declaration de toutes les fonctions du programmes
  void init_labyrinthe(void);
  void vide_stock(void);

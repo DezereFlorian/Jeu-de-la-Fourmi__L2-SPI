@@ -28,8 +28,8 @@ aleatoire.o : aleatoire.c
 fourmi.o : fourmi.c 
 	gcc -o fourmi.o -c fourmi.c -Wall
 	
-gen_labyrinthe.o : gen_labyrinthe.c header.h
+gen_labyrinthe.o : gen_labyrinthe.c header.h header_fourmi.h
 	gcc -o gen_labyrinthe.o -c gen_labyrinthe.c -Wall
 	
 clean:
-	rm -rf *.o
+	rm *.o

@@ -10,6 +10,7 @@
 
 
 #include "header.h"
+#include "header_fourmi.h"
 
 /**
 *\fn void gen_fourmi(void)

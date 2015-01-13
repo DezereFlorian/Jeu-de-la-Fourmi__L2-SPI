@@ -12,14 +12,17 @@
 #include "header.h"
 
 /**
-*\fn void gen_stock_fourmi(int id_fourmi)
-*\brief Fonction permettant de definir une quantite de nourriture, d'eau, de dodo que possède Zozor
-*\param int id_fourmi est l'identifiant de Zozor
+*\fn void gen_stock(void)
+*\brief Fonction permettant de definir une quantite aléatoire de repas, d'eau ou de sommeil sur chaque point correspondant
 */
 
-
-void gen_stock_fourmi(int id_fourmi){
-	population[id_fourmi].eau = 40;
-	population[id_fourmi].repas = 30;
-	population[id_fourmi].dodo = 20;
+void gen_stock (void){
+	int i = 0, j = 0; 
+	for (i = 0; i < N; i++){
+		for (j = 0; j < N; j++){
+			if (emplacement[i][j] == eau || emplacement[i][j] == dodo || emplacement[i][j] == manger){ //verifie si la case represente un point d'eau, de manger ou de dodo 
+				stock[i][j] = rand () %451 + 50; //on genre un stock compris entre 50 et 500 ressources que l'on stocke dans la matrice stock associe au labyrinthe
+			}
+		}
+	}
 }

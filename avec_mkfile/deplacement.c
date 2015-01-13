@@ -88,7 +88,7 @@ void mv_fourmi(int id_fourmi){
 						population[id_fourmi].dodo = 0;
 					}
 
-					afficher_entrer(3);
+					affiche_entrer(3);
 					printf("PERDU! Sans visiblement aucune raison apparente... dommage pour vous");
 				}
 
