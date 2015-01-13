@@ -391,3 +391,9 @@
 	"begin_code.h"
 	"close_code.h"
 
+1420477357 source:d:\fac\projet_info\sdl\main.c
+	<stdlib.h>
+	<stdio.h>
+	<SDL/SDL.h>
+	<SDL_image.h>
+

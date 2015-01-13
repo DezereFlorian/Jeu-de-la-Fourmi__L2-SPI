@@ -136,6 +136,4 @@ x 666 , y 254
 mur dans la case [12,5]
 x 666 , y 306
 mur dans la case [12,7]
-x 666 , y 410x 510 , y 462x 510 , y 462x 94 , y 358x 354 , y 46x 146 , y 358x 198 , y 306x 614 , y 254x 354 , y 410x 354 , y 462x 146 , y 462x 250 , y 254x 94 , y 150x 406 , y 462Entrez le nombre de fourmi que vous voudriez voir apparaitre sur le labyrinthe en plus de celle que vous controlerez (entre 1 et 3): bloquer case : [3 , 4] posx 198 , posy 254  typeCase 1
-bloquer case : [7 , 2] posx 406 , posy 150  typeCase 1
-bloquer case : [8 , 3] posx 458 , posy 202  typeCase 1
+x 666 , y 410x 510 , y 462x 510 , y 462x 250 , y 566x 562 , y 618x 562 , y 358x 562 , y 150x 42 , y 462x 406 , y 462x 302 , y 462x 94 , y 98x 146 , y 358x 458 , y 618x 458 , y 254Entrez le nombre de fourmi que vous voudriez voir apparaitre sur le labyrinthe en plus de celle que vous controlerez (entre 1 et 3): 

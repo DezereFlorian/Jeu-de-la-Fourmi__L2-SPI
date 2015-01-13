@@ -261,3 +261,52 @@
 1420562684 source:d:\fac\algo\labizor\verification_saisie.c
 	"header.h"
 
+1421006647 source:d:\fac\projet_info\sdl\labizor\affichage.c
+	"header.h"
+
+1421081219 d:\fac\projet_info\sdl\labizor\header.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<time.h>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+
+1420560456 source:d:\fac\projet_info\sdl\labizor\aleatoire.c
+	"header.h"
+
+1421102088 source:d:\fac\projet_info\sdl\labizor\deplacement.c
+	"header.h"
+
+1421016365 source:d:\fac\projet_info\sdl\labizor\fin_de_jeu.c
+	"header.h"
+
+1421007391 source:d:\fac\projet_info\sdl\labizor\fourmi.c
+	"header.h"
+
+1420991335 source:d:\fac\projet_info\sdl\labizor\gen_fourmi.c
+
+1421016456 source:d:\fac\projet_info\sdl\labizor\gen_labyrinthe.c
+	"header.h"
+
+1421101869 source:d:\fac\projet_info\sdl\labizor\main.c
+	<stdlib.h>
+	<stdio.h>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	"header.h"
+
+1421014537 source:d:\fac\projet_info\sdl\labizor\mise_a_0.c
+	"header.h"
+
+1421007249 source:d:\fac\projet_info\sdl\labizor\stock.c
+	"header.h"
+
+1420562684 source:d:\fac\projet_info\sdl\labizor\verification_saisie.c
+	"header.h"
+
