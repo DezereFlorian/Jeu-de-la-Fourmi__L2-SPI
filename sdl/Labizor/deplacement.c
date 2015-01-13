@@ -141,28 +141,43 @@ void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface
 
 
                                     if(verif_mur_fourmi(positionFourmi.x, (positionFourmi.y - Taille_Bloc)))
-                  /**<  */                     {
+                                       {
                                            positionFourmi.y = positionFourmi.y - Taille_Bloc;
+
                                        }
                                     break;
                                 case SDLK_DOWN: // Flèche bas
                                     if(verif_mur_fourmi(positionFourmi.x, (positionFourmi.y + Taille_Bloc)))
                                        {
                                         positionFourmi.y = positionFourmi.y + Taille_Bloc;
+
                                        }
                                     break;
                                 case SDLK_RIGHT: // Flèche droite
                                     if(verif_mur_fourmi((positionFourmi.x + Taille_Bloc), positionFourmi.y))
                                        {
                                         positionFourmi.x = positionFourmi.x + Taille_Bloc;
+
                                        }
                                     break;
                                 case SDLK_LEFT: // Flèche gauche
                                     if(verif_mur_fourmi((positionFourmi.x - Taille_Bloc), positionFourmi.y))
                                        {
                                         positionFourmi.x = positionFourmi.x - Taille_Bloc;
+
                                        }
                                     break;
+
+                                     case SDLK_p:
+                                                    if(Mix_PausedMusic() == 1)//Si la musique est en pause
+                                                    {
+                                                        Mix_ResumeMusic(); //Reprendre la musique
+                                                    }
+                                                    else
+                                                    {
+                                                        Mix_PauseMusic(); //Mettre en pause la musique
+                                                    }
+                                        break;
 
                                 case SDLK_a:
                                     continuer = 0;
@@ -172,9 +187,10 @@ void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface
 
 
                     }
+
                     SDL_BlitSurface(fourmi_SDL, NULL, ecran, &positionFourmi);
-                    /* On met à jour l'affichage */
-                    SDL_Flip(ecran);
+                                            /* On met à jour l'affichage */
+                                            SDL_Flip(ecran);
 
 
                 }

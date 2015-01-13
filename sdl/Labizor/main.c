@@ -160,8 +160,7 @@ printf("\ntypeCase : base : %d",base);
             positionFourmi = getBasePos();
 
 
-            /*repetition des touches*/
-            SDL_EnableKeyRepeat(10, 10);
+
 
             /* On efface l'écran */
             SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 33, 185, 29));
@@ -215,6 +214,17 @@ printf("\ntypeCase : base : %d",base);
                                                     SDL_BlitSurface(jouer_SDL, NULL, ecran, &positionJouer);
                                                     SDL_Flip(ecran);
 
+                                        break;
+
+                                        case SDLK_p:
+                                                    if(Mix_PausedMusic() == 1)//Si la musique est en pause
+                                                    {
+                                                        Mix_ResumeMusic(); //Reprendre la musique
+                                                    }
+                                                    else
+                                                    {
+                                                        Mix_PauseMusic(); //Mettre en pause la musique
+                                                    }
                                         break;
 
                                         //arrête le jeu
