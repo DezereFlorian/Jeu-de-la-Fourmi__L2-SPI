@@ -31,7 +31,7 @@ void jouerGUI (SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface *imageDe
 
 int main(int argc, char *argv[])
 {
-
+/*
 printf("\ntypeCase : vide : %d",vide);
 printf("\ntypeCase : mur : %d",mur);
 printf("\ntypeCase : base : %d",eau);
@@ -40,6 +40,7 @@ printf("\ntypeCase : manger : %d",manger);
 printf("\ntypeCase : fourmi : %d",fourmi);
 printf("\ntypeCase : troll_case : %d",troll_case);
 printf("\ntypeCase : base : %d",base);
+*/
 
  SDL_Surface    *ecran = NULL,
                 *imageDeFond = NULL,

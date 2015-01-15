@@ -32,10 +32,20 @@ int end_game(void){
 void gen_troll_case (void){
 	int j = 0, i = 0;
 
+
 	do{
 		i = rand() % N;
 		j = rand() % N;
 	}
 	while(labyrinthe[i][j] != vide);
 	labyrinthe[i][j] = troll_case;
+
+}
+
+void troll_case_SDL(SDL_Surface *ecran, SDL_Surface *imageDeFond,SDL_Rect positionFond){
+    SDL_Surface *imageDeFondPerdu = NULL;
+    imageDeFondPerdu = IMG_Load("image/FondPerdu.png");
+    SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 33, 185, 29));
+    SDL_BlitSurface(imageDeFondPerdu, NULL, ecran, &positionFond);
+    SDL_Flip(ecran);
 }

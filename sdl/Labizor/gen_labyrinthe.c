@@ -246,7 +246,7 @@ init_labyrinthe();
     	 //SDL JB
 	  SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 33, 185, 29));
 
-    /* Blit du texte sur l'ecran */
+    /* Blit du fond sur l'ecran */
     SDL_BlitSurface(imageDeFond, NULL, ecran, &positionFond);
 
       SDL_Flip(ecran);

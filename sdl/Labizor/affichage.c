@@ -117,3 +117,59 @@ void positionner_element(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Surfa
 
 
 }
+
+void afficher_labyrinthe(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond)
+{
+
+    SDL_Surface *manger_SDL = NULL,
+                *dodo_SDL = NULL,
+                *mur_SDL = NULL,
+                *eau_SDL = NULL;
+
+    manger_SDL = IMG_Load("image/carotte.png");
+    dodo_SDL = IMG_Load("image/lit.png");
+    eau_SDL = IMG_Load("image/eau.png");
+    mur_SDL = IMG_Load("image/mur.png");
+    SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 33, 185, 29));
+
+    /* Blit du fond sur l'ecran */
+    SDL_BlitSurface(imageDeFond, NULL, ecran, &positionFond);
+    int i = 0, j = 0;
+    afficher_matrice();
+	for (i = 0; i < N; i++)
+    {
+		for (j = 0; j < N; j++)
+		{
+
+                if(labyrinthe[i][j] == mur)
+                {
+                    positionner_element(ecran, imageDeFond, mur_SDL, positionFond, i, j);
+                }
+                else if(labyrinthe[i][j] == eau)
+                {
+                    positionner_element(ecran, imageDeFond, eau_SDL, positionFond, i, j);
+                }
+                else if(labyrinthe[i][j] == manger)
+                {
+                    positionner_element(ecran, imageDeFond, manger_SDL, positionFond, i, j);
+                }
+                else if(labyrinthe[i][j] == dodo)
+                {
+                    positionner_element(ecran, imageDeFond, dodo_SDL, positionFond, i, j);
+                }
+		}
+	}
+}
+
+void afficher_matrice()
+{
+      int i = 0, j = 0;
+	for (i = 0; i < N; i++)
+    {
+        printf("\n");
+		for (j = 0; j < N; j++)
+		{
+		    printf(" [%d] ",labyrinthe[i][j]);
+		}
+    }
+}

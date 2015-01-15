@@ -21,7 +21,7 @@
 #include <SDL_mixer.h>
 
  //definition des variables globales
- #define N 12 // taille du labyrinthe en largeur et longueur
+ #define N 13 // taille du labyrinthe en largeur et longueur
  #define Z 50 // taille du tableau de populaton, soit un maximum de 50 fourmi dans le tableau A AJOUTER
  #define Taille_Bloc 52 //Taille d'un bloc carré en px
  #define nbEau 4
@@ -85,3 +85,6 @@ void gen_labyrinthe(SDL_Surface *ecran, SDL_Surface *imageDeFond,SDL_Rect positi
 void positionner_element(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Surface *element_SDL, SDL_Rect positionFond, int x, int y);
 void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface *imageDeFond,SDL_Rect positionFond, SDL_Rect positionFourmi);
 SDL_Rect getBasePos(void);
+void afficher_labyrinthe(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond);
+void troll_case_SDL(SDL_Surface *ecran, SDL_Surface *imageDeFond,SDL_Rect positionFond);
+int verif_mur_fourmi_troll_case(int x, int y, SDL_Surface *ecran, SDL_Surface *imageDeFond,SDL_Rect positionFond);

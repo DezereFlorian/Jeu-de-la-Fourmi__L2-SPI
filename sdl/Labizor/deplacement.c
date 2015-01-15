@@ -133,6 +133,7 @@ void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface
                     {
                         case SDL_QUIT:
                             continuer = 0;
+                            exit(0);
                             break;
                         case SDL_KEYDOWN:
                             switch(event.key.keysym.sym)
@@ -140,32 +141,45 @@ void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface
                                 case SDLK_UP: // Flèche haut
 
 
-                                    if(verif_mur_fourmi(positionFourmi.x, (positionFourmi.y - Taille_Bloc)))
+                                    if(verif_mur_fourmi_troll_case(positionFourmi.x, (positionFourmi.y - Taille_Bloc), ecran, imageDeFond, positionFond))
                                        {
-                                           positionFourmi.y = positionFourmi.y - Taille_Bloc;
+                                            positionFourmi.y = positionFourmi.y - Taille_Bloc;
+                                            afficher_labyrinthe(ecran, imageDeFond, positionFond);
+                                            SDL_BlitSurface(fourmi_SDL, NULL, ecran, &positionFourmi);
 
                                        }
+
+
                                     break;
                                 case SDLK_DOWN: // Flèche bas
-                                    if(verif_mur_fourmi(positionFourmi.x, (positionFourmi.y + Taille_Bloc)))
+                                    if(verif_mur_fourmi_troll_case(positionFourmi.x, (positionFourmi.y + Taille_Bloc), ecran, imageDeFond, positionFond))
                                        {
-                                        positionFourmi.y = positionFourmi.y + Taille_Bloc;
+                                            positionFourmi.y = positionFourmi.y + Taille_Bloc;
+                                            afficher_labyrinthe(ecran, imageDeFond, positionFond);
+                                            SDL_BlitSurface(fourmi_SDL, NULL, ecran, &positionFourmi);
 
                                        }
+
                                     break;
                                 case SDLK_RIGHT: // Flèche droite
-                                    if(verif_mur_fourmi((positionFourmi.x + Taille_Bloc), positionFourmi.y))
+                                    if(verif_mur_fourmi_troll_case((positionFourmi.x + Taille_Bloc), positionFourmi.y, ecran, imageDeFond, positionFond))
                                        {
                                         positionFourmi.x = positionFourmi.x + Taille_Bloc;
+                                        afficher_labyrinthe(ecran, imageDeFond, positionFond);
+                                        SDL_BlitSurface(fourmi_SDL, NULL, ecran, &positionFourmi);
 
                                        }
+
                                     break;
                                 case SDLK_LEFT: // Flèche gauche
-                                    if(verif_mur_fourmi((positionFourmi.x - Taille_Bloc), positionFourmi.y))
+                                    if(verif_mur_fourmi_troll_case((positionFourmi.x - Taille_Bloc), positionFourmi.y, ecran, imageDeFond, positionFond))
                                        {
-                                        positionFourmi.x = positionFourmi.x - Taille_Bloc;
+                                            positionFourmi.x = positionFourmi.x - Taille_Bloc;
+                                            afficher_labyrinthe(ecran, imageDeFond, positionFond);
+                                            SDL_BlitSurface(fourmi_SDL, NULL, ecran, &positionFourmi);
 
                                        }
+
                                     break;
 
                                      case SDLK_p:
@@ -181,6 +195,7 @@ void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface
 
                                 case SDLK_a:
                                     continuer = 0;
+
                                     break;
                             }
                             break;
@@ -188,16 +203,18 @@ void deplacement_fourmi(SDL_Surface *ecran, SDL_Surface *fourmi_SDL, SDL_Surface
 
                     }
 
-                    SDL_BlitSurface(fourmi_SDL, NULL, ecran, &positionFourmi);
-                                            /* On met à jour l'affichage */
-                                            SDL_Flip(ecran);
+                    /* On met à jour l'affichage */
+
+                    SDL_Flip(ecran);
 
 
                 }
+
 }
 
-int verif_mur_fourmi(int x, int y){
+int verif_mur_fourmi_troll_case(int x, int y, SDL_Surface *ecran, SDL_Surface *imageDeFond,SDL_Rect positionFond){
     int posMatX, posMatY;
+
 
     if(x<0 || y<0){
         return 0;
@@ -205,7 +222,7 @@ int verif_mur_fourmi(int x, int y){
 
         posMatX = (x - 42) / Taille_Bloc;
         posMatY = (y - 46) / Taille_Bloc;
-        if(posMatX > N || posMatY > N)
+        if(posMatX > N-1 || posMatY > N-1)
         {
             return 0;
         }
@@ -213,10 +230,15 @@ int verif_mur_fourmi(int x, int y){
             if(labyrinthe[posMatX][posMatY] != mur) {
                 return 1;
             }
-            else
+            else if(labyrinthe[posMatX][posMatY] = troll_case)
             {
+
+                troll_case_SDL(ecran, imageDeFond, positionFond);
+                _sleep(5000);
+                exit(0);
                 printf("bloquer case : [%d , %d] posx %d , posy %d  typeCase %d\n",posMatX,posMatY,x,y,labyrinthe[posMatX][posMatY]);
                 return 0;
             }
 
 }
+
